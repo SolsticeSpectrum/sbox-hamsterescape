@@ -39,7 +39,7 @@ public sealed class HamsterController : Component, Component.ITriggerListener
 		if ( Transform.Position.z < -KillHeight
 			|| Transform.Position.z > KillHeight )
 		{
-			if ( SceneManager.DeathSound != null ) PlaySound( SceneManager.DeathSound, 1.5f, 1 );
+			if ( SceneManager.DeathSound != null ) PlaySound( SceneManager.DeathSound, 1.5f, 1.5f );
 			Respawn();
 		}
 
@@ -58,7 +58,7 @@ public sealed class HamsterController : Component, Component.ITriggerListener
 
 		if ( other.Tags.Has( "gold" ) )
 		{
-			if ( SceneManager.PickupSound != null ) PlaySound( SceneManager.PickupSound, 2, 1.5f );
+			if ( SceneManager.PickupSound != null ) PlaySound( SceneManager.PickupSound, 2, 2.5f );
 			SceneManager.Golds += 5;
 			other.GameObject.Destroy();
 		}

@@ -1,7 +1,7 @@
 using Sandbox;
 using Sandbox.Services;
 
-public sealed class SceneManager : Component, Component.ITriggerListener
+public sealed class SceneManager : Component
 {
 	[Property] public string LeaderboardName { get; set; } = "highscores";
 	[Property] public GameObject SpawnTarget { get; set; }
