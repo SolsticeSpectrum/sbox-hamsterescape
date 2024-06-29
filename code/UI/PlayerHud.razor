@@ -1,0 +1,52 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	<div class="vitals">
+		<p><span>⏱️</span> <span>@GetTimeString()</span></p>
+		<p><span>💰</span> <span @ref="Points">@SceneManager.Golds</span></p>
+	</div>
+</root>
+
+@code
+{
+	[Property] SceneManager SceneManager { get; set; }
+
+	public Panel Points { get; set; }
+	public TimeUntil TimeUntil { get; set; } = 0;
+	public bool Animate { get; set; } = false;
+
+	private long gold = 0;
+
+	private string GetTimeString()
+	{
+		var time = SceneManager.TimeAlive;
+		var minutes = (int) time / 60;
+		var seconds = (int) time % 60;
+		return $"{minutes:00}:{seconds:00}";
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine( SceneManager.Golds, SceneManager.TimeAlive.ToString() );
+	}
+
+	protected override void OnTreeFirstBuilt()
+	{
+		Points.BindClass( "animate", () => Animate );
+	}
+
+	protected override void OnUpdate()
+	{
+		if ( gold != SceneManager.Golds )
+		{
+			TimeUntil = .3f;
+			Animate = true;
+		}
+		
+		if ( TimeUntil <= 0 ) Animate = false;
+
+		gold = SceneManager.Golds;
+	}
+}

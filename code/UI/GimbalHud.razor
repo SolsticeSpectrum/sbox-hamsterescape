@@ -1,0 +1,22 @@
+@using Sandbox;
+@using System;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	<GimbalViewer />
+</root>
+
+@code
+{
+	[Property] public GameObject MazeBox { get; set; }
+
+	protected override void OnFixedUpdate()
+	{
+		if ( GimbalViewer.Instance == null
+			|| GimbalViewer.Instance.Gimbal.Model == null
+			|| GimbalViewer.Instance.Gimbal.Model.IsError) return;
+
+		GimbalViewer.Instance.Gimbal.Rotation = MazeBox.Transform.Rotation;
+	}
+}

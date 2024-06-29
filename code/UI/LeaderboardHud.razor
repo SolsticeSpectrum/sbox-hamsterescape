@@ -1,0 +1,70 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	<div @ref="Leaderboard" class="leaderboard">
+		@if ( SceneManager.Leaderboard != null )
+		{
+			<h1>Leaderboard</h1>
+
+			<div class="entries">
+				@foreach ( var entry in SceneManager.Leaderboard.Entries )
+				{
+					<div class="entry @IsMe( entry )">
+						<div class="rank">@entry.Rank</div>
+
+						<div class="name">
+							<image texture=@Avatar( entry ) />
+							<label>@entry.DisplayName</label>
+						</div>
+
+						<div class="value">@Score( entry, SceneManager.HighScore, entry.Value )</div>
+					</div>
+				}
+			</div>
+
+			<p>press Tab to hide</p>
+		}
+	</div>
+</root>
+
+@code
+{
+	[Property] SceneManager SceneManager { get; set; }
+
+	public Panel Leaderboard { get; set; }
+	public bool Visible { get; set; } = true;
+	public TimeUntil TimeUntil { get; set; } = 0;
+
+	private string IsMe( Sandbox.Services.Leaderboards.Entry entry )
+	{
+		return entry.Me ? "me" : "";
+	}
+
+	private string Avatar( Sandbox.Services.Leaderboards.Entry entry )
+	{
+		return $"avatar:{entry.SteamId}";
+	}
+
+	private string Score( Sandbox.Services.Leaderboards.Entry entry, long highscore, double score)
+	{
+		long value = ( highscore > score ) ? highscore : ( long ) score;
+		return ( entry.Me ) ? value.ToString() : score.ToString();
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine( SceneManager.Golds, SceneManager.HighScore, SceneManager.Update );
+	}
+
+	protected override void OnTreeFirstBuilt()
+	{
+		Leaderboard.BindClass( "hide", () => !Visible );
+	}
+
+	protected override void OnUpdate()
+	{
+		if ( Input.Pressed( "Leaderboard" ) ) Visible = !Visible;
+	}
+}

@@ -1,0 +1,164 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Collections.Generic;
+@inherits PanelComponent
+
+<root @ref="Pause">
+	@if ( IsSettings )
+	{
+		<h2>Settings</h2>
+		<div class="settings">
+			<label>mouse sensitivity</label>
+			<SliderControl Value:bind="@RotationController.M_Sensitivity" Min=@(1) Max=@(20) Step=@(1) />
+		</div>
+		<div class="settings">
+			<label>keaboard sensitivity</label>
+			<SliderControl Value:bind="@RotationController.KB_Sensitivity" Min=@(1) Max=@(20) Step=@(1) />
+		</div>
+		<div class="settings">
+			<label>music volume</label>
+			<SliderControl Value:bind="@Volume" Min=@(0) Max=@(10) Step=@(1) />
+		</div>
+		<div class="button" style="margin-top: 5vh" onclick=@OnSettings>Back</div>
+	}
+	else if ( IsCredits )
+	{
+		<div class="credits">
+			<p class="intro">thanks to members of s&box community for their support</p>
+			<div class="list">
+				<ul class="column">
+					<li>1. Arargd</li>
+					<li>2. Brassx</li>
+					<li>3. Carson</li>
+					<li>4. devultj</li>
+					<li>5. DrakeFruit</li>
+					<li>6. funyOn</li>
+					<li>7. garry</li>
+				</ul>
+				<ul class="column">
+					<li>8. Kidd</li>
+					<li>9. kicks</li>
+					<li>10. Matt944</li>
+					<li>11. R3N10</li>
+					<li>12. Toby</li>
+					<li>13. ubre</li>
+					<li>14. Xenthio</li>
+				</ul>
+			</div>
+			<p class="conclusion">this game wouldn't exist without them</p>
+		</div>
+		<div class="button" style="margin-top: 5vh" onclick=@OnCredits>Back</div>
+	} else
+	{
+		<h2>Paused</h2>
+		<div class="options">
+			<div class="button" onclick=@OnResume>Resume</div>
+			<div class="button" onclick=@OnSettings>Settings</div>
+			<div class="button" onclick=@OnCredits>Credits</div>
+			<div class="button" onclick=@OnQuit>Quit</div>
+		</div>
+	}
+</root>
+
+@code
+{
+	[Property] RotationController RotationController { get; set; }
+	[Property] GameObject PlayerHud { get; set; }
+
+	public Panel Pause { get; set; }
+	public bool IsPaused { get; set; } = false;
+	public bool IsSettings { get; set; } = false;
+	public bool IsCredits { get; set; } = false;
+	public int IntValue { get; set; } = 10;
+	public float Volume { get; set; } = 3;
+
+	private string settings = FileSystem.Data.ReadAllText("settings.txt");
+
+	private void OnResume()
+	{
+		IsPaused = false;
+	}
+
+	private void OnSettings()
+	{
+		IsSettings = !IsSettings;
+	}
+
+	private void OnCredits()
+	{
+		IsCredits = !IsCredits;
+	}
+
+	private void OnQuit()
+	{
+		Game.Close();
+	}
+
+	protected override void OnUpdate()
+	{
+		if ( Input.EscapePressed )
+		{
+			IsPaused = !IsPaused;
+			Input.EscapePressed = false;
+		}
+
+		Scene.TimeScale = IsPaused ? 0 : 1;
+
+		PlayerHud.Components.Get<SoundPointComponent>().Volume = Volume / 10;
+	}
+
+	protected override void OnTreeFirstBuilt()
+	{
+		Pause.BindClass( "hide", () => !IsPaused );
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine( IsPaused );
+	}
+
+	protected override void OnDisabled()
+	{
+		List<string> lines = new List<string>
+		{
+			"m_sensitivity:" + RotationController.M_Sensitivity,
+			"kb_sensitivity:" + RotationController.KB_Sensitivity,
+			"music_volume:" + Volume
+		};
+
+		string linesAsString = string.Join( "\n", lines );
+
+		FileSystem.Data.WriteAllText( "settings.txt", linesAsString );
+	}
+
+	protected override void OnAwake()
+	{
+		if ( !FileSystem.Data.FileExists( "settings.txt" ) ) return;
+
+		string file = FileSystem.Data.ReadAllText( "settings.txt" );
+		string[] lines = file.Split( '\n' );
+
+		foreach (string line in lines)
+		{
+			string[] parts = line.Split( ':' );
+			if (parts.Length == 2)
+			{
+				string key = parts[0].Trim();
+				string value = parts[1].Trim();
+
+				switch (key)
+				{
+					case "m_sensitivity":
+						RotationController.M_Sensitivity = value.ToInt();
+						break;
+					case "kb_sensitivity":
+						RotationController.KB_Sensitivity = value.ToInt();
+						break;
+					case "music_volume":
+						Volume = value.ToFloat();
+						break;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,32 @@
+{
+  "RootObject": {
+    "Id": "4467538e-0528-4246-b9cc-25897751a066",
+    "Name": "pillar",
+    "Scale": "0.2,0.2,0.3",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/reizer_props/srsp/stylized/wall/wall_1_column_1.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "BoxCollider",
+        "Center": "0,0,85",
+        "IsTrigger": false,
+        "Scale": "33,33,170",
+        "Static": false,
+        "Surface": "surfaces/brick.surface"
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": [
+    "reizer.wall_1_column_1a"
+  ]
+}

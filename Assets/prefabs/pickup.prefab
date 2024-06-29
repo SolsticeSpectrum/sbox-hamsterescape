@@ -1,0 +1,37 @@
+{
+  "RootObject": {
+    "Id": "9f67177f-08ac-4963-a39d-97c0a2aa7eb9",
+    "Name": "pickup",
+    "Scale": "1.5,1.5,1.5",
+    "Tags": "gold",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialOverride": "materials/mymaterials/gold_bar.vmat",
+        "Model": "models/mymodels/gold_bar/gold_bar.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "BoxCollider",
+        "Center": "0,0,1.5",
+        "IsTrigger": true,
+        "Scale": "2,5,2",
+        "Static": false
+      },
+      {
+        "__type": "PickupController"
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": [
+    "snakecoil.gold_bar"
+  ]
+}

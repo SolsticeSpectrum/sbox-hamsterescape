@@ -1,0 +1,48 @@
+PlayerHud {
+	font-family: Tannenberg Fett;
+
+	> .vitals {
+		position: absolute;
+		top: 3vh;
+		left: 2.5vw;
+		font-size: 6vh;
+		font-weight: bold;
+		letter-spacing: 8px;
+		color: white;
+		flex-direction: column;
+
+		> p {
+			flex-direction: row;
+			align-items: center;
+		}
+
+		> p span:last-child {
+			text-stroke: 9px black;
+
+			&.animate {
+				animation: tilt 0.3s;
+			}
+		}
+
+		> p span:first-child {
+			width: 8vh;
+		}
+	}
+}
+
+@keyframes tilt {
+	0% {
+		transform: rotate(0deg) scale(1);
+		transform-origin: center;
+	}
+
+	50% {
+		transform: rotate(10deg) scale(1.2);
+		transform-origin: center;
+	}
+
+	100% {
+		transform: rotate(0deg) scale(1);
+		transform-origin: center;
+	}
+}

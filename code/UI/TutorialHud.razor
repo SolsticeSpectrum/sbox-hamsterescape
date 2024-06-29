@@ -1,0 +1,127 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Collections.Generic;
+@using System;
+@inherits PanelComponent
+
+<root>
+	<div class="tutorial">
+		<p>@text</p>
+		<div class="progress-bar" style="display: @( Visible ? "flex" : "none" )">
+			<div class="progress" style="width: @bar"></div>
+		</div>
+	</div>
+</root>
+
+@code
+{
+	[Property] SceneManager SceneManager { get; set; }
+	[Property] public int Progress { get; set; } = 500;
+	[Property] public List<string> Texts { get; set; } = new List<string>
+	{
+		"move your mouse around",
+		"you can also use WSAD",
+		"drag using left mouse button",
+		"you can also use E and Q",
+		"collect 4 gold bars",
+		"reach the goal platform twice",
+		"get as many points as possible"
+	};
+
+	public TimeSince TimeSince { get; set; } = 0;
+	public bool Visible { get; set; } = true;
+
+	private string text = "";
+	private float bar = 0;
+	private float increment = .5f;
+	private long gold = 0;
+	private int wins = 0;
+	private int tutorial = 1;
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine( bar );
+	}
+
+	protected override void OnAwake()
+	{
+		if ( FileSystem.Data.ReadAllText( "tutorial.txt" ) == "finished" )
+			GameObject.Components.Get<TutorialHud>().Destroy();
+		else text = Texts[0];
+	}
+
+	protected override void OnUpdate()
+	{
+		Tutorial();
+
+		gold = SceneManager.Golds;
+		wins = SceneManager.Wins;
+	}
+
+	private void Controls()
+	{
+		bool condition = tutorial switch
+		{
+			1 => Input.MouseDelta != Vector2.Zero,
+			2 => Input.Down( "Tilt Forward" ) 
+				|| Input.Down( "Tilt Backward" ) 
+				|| Input.Down( "Tilt Left" ) 
+				|| Input.Down( "Tilt Right" ),
+			3 => Input.MouseDelta != Vector2.Zero && Input.Down( "Spin Button" ),
+			4 => Input.Down( "Spin Left" ) || Input.Down( "Spin Right" ),
+			_ => false
+		};
+
+		if ( condition ) { bar += increment; Next(); }
+	}
+
+	private void Goal( bool goal )
+	{
+		if ( goal ? ( wins != SceneManager.Wins ) : ( gold != SceneManager.Golds ) )
+			bar += Progress / ( goal ? 2 : 4 );
+
+		Next();
+	}
+
+	private void Finish()
+	{
+		if ( TimeSince > 5 )
+		{
+			if ( !FileSystem.Data.FileExists( "tutorial.txt" ) )
+				FileSystem.Data.WriteAllText( "tutorial.txt", "finished" );
+
+			GameObject.Components.Get<TutorialHud>().Destroy();
+		}
+	}
+
+	private void Next()
+	{
+		if ( bar >= Progress ) 
+		{
+			tutorial++;
+			text = Texts[tutorial - 1];
+			bar = 0f;
+
+			if ( tutorial == 7 ) { TimeSince = 0; Visible = !Visible; }
+		}
+	}
+
+	private void Tutorial()
+	{
+		switch ( tutorial )
+		{
+			case ( >= 1 ) and ( <= 4 ):
+				Controls();
+				break;
+			case 5:
+				Goal( false );
+				break;
+			case 6:
+				Goal( true );
+				break;
+			case 7:
+				Finish();
+				break;
+		}
+	}
+}

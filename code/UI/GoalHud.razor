@@ -1,0 +1,43 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	<div class="goal">
+		<p><span @ref="Goal">100!</span></p>
+	</div>
+</root>
+
+@code
+{
+	[Property] SceneManager SceneManager { get; set; }
+
+	public Panel Goal { get; set; }
+	public TimeUntil TimeUntil { get; set; } = 0;
+	public bool Animate { get; set; } = false;
+
+	private int win = 0;
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine( SceneManager.Wins );
+	}
+
+	protected override void OnTreeFirstBuilt()
+	{
+		Goal.BindClass( "animate", () => Animate );
+	}
+
+	protected override void OnUpdate()
+	{
+		if ( win != SceneManager.Wins )
+		{
+			TimeUntil = .8f;
+			Animate = true;
+		}
+		
+		if ( TimeUntil <= 0 ) Animate = false;
+
+		win = SceneManager.Wins;
+	}
+}

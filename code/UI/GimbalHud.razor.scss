@@ -1,0 +1,10 @@
+GimbalHud {
+	position: absolute;
+	right: -3vw;
+	bottom: 3vh;
+
+	> GimbalViewer {
+		width: 25vw;
+		height: 30vh;
+	}
+}

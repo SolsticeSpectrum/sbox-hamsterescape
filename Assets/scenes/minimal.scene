@@ -1,0 +1,859 @@
+{
+  "__guid": "3dce51f8-1252-40c8-9079-bfda50710c66",
+  "GameObjects": [
+    {
+      "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
+      "Flags": 0,
+      "Name": "Sun",
+      "Rotation": "-0.0000000377291,0.6329893,0.0000000000000005185386,0.774161",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "4c8dff8a-44a9-4ef0-8f62-bed1128f0dfd",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0.05882,0.07451,0.08235,1"
+        }
+      ]
+    },
+    {
+      "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
+      "Flags": 0,
+      "Name": "2D Skybox",
+      "Tags": "skybox",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkyBox2D",
+          "__guid": "30c5437a-c018-429a-9c31-4f0618e2efdc",
+          "SkyMaterial": "materials/default/alienred.vmat",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.EnvmapProbe",
+          "__guid": "16423314-463e-402c-b946-6739b71e3bc1",
+          "Texture": "textures/cubemaps/default2.vtex",
+          "Bounds": {
+            "Mins": "-512,-512,-512",
+            "Maxs": "512,512,512"
+          },
+          "DelayBetweenUpdates": 0.1,
+          "Feathering": 0.02,
+          "FrameInterval": 5,
+          "MaxDistance": 512,
+          "Projection": "Sphere",
+          "RenderDynamically": false,
+          "TintColor": "1,1,1,1",
+          "UpdateStrategy": "OnEnabled",
+          "ZFar": 4096,
+          "ZNear": 16
+        }
+      ]
+    },
+    {
+      "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
+      "Flags": 0,
+      "Name": "Camera",
+      "Position": "-300,0,500",
+      "Rotation": "-0.00000001315013,0.5,0.000000004663518,0.8660254",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "0cf2bd46-649f-4b6c-964b-365f830d5262",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        }
+      ]
+    },
+    {
+      "__guid": "3c1c177f-2fac-4ea3-bad4-987e43b43d84",
+      "Flags": 0,
+      "Name": "GameManager",
+      "Position": "-150,-0.000001521804,240.1924",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "SceneManager",
+          "__guid": "7a4aefcc-c2e4-472c-b14a-3c54c7d25a37",
+          "DeathSound": "sounds/life_sfx/jump_sfx/jump_sfx.sound",
+          "GoalSpawner": {
+            "_type": "component",
+            "component_id": "7fc8dccf-0ba7-4716-9065-553cf9069ce2",
+            "go": "b5043813-d30e-4233-a6d7-f2fcdc0d9171",
+            "component_type": "GoalSpawner"
+          },
+          "GoalTarget": {
+            "_type": "gameobject",
+            "go": "39be7bb6-71c8-4121-a7df-516600682aa7"
+          },
+          "Golds": 0,
+          "HighScore": 1000,
+          "LeaderboardName": "highscores",
+          "MazeSpawner": {
+            "_type": "component",
+            "component_id": "a49f2afd-1262-47f9-bfab-9fd10aad8e80",
+            "go": "7a4ab2a7-6fe0-4a11-a455-c6fd9b75d656",
+            "component_type": "MazeSpawner"
+          },
+          "PickupSound": "sound/coin3.sound",
+          "SpawnTarget": {
+            "_type": "gameobject",
+            "go": "9f7052c0-880b-4c6a-b305-5444beafddb7"
+          },
+          "Wins": 0,
+          "WinSound": "sound/magic2.sound"
+        }
+      ]
+    },
+    {
+      "__guid": "9f7052c0-880b-4c6a-b305-5444beafddb7",
+      "Flags": 0,
+      "Name": "Spawn",
+      "Position": "-25,-25,300",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Children": [
+        {
+          "__guid": "d9176fb2-a6ed-4546-bfd4-0eb2cffc0671",
+          "Flags": 0,
+          "Name": "wall",
+          "Position": "-25,0,60",
+          "Rotation": "1,0,0,-0.00000004371139",
+          "Scale": "0.2,0.25,0.8",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "45a463fa-8835-4e5f-a673-04d3a2e482c4",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/reizer_props/srsp/stylized/wall/wall_1.vmdl",
+              "RenderType": "Off",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "f86d9cc7-3cda-4276-baf1-616988b7765a",
+          "Flags": 0,
+          "Name": "wall",
+          "Position": "25,0,60",
+          "Rotation": "1,0,0,-0.00000004371139",
+          "Scale": "0.2,0.25,0.8",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "f27a8f95-7e5c-406f-a06b-ddacf15dd025",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/reizer_props/srsp/stylized/wall/wall_1.vmdl",
+              "RenderType": "Off",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "1f7564ed-0da8-4918-9275-d35c73198b44",
+          "Flags": 0,
+          "Name": "wall",
+          "Position": "0,25,60",
+          "Rotation": "0.7071068,0.7071068,-0.00000003090862,-0.00000003090862",
+          "Scale": "0.2,0.25,0.8",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "7b33902c-c902-402d-ab7f-cc4207214bac",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/reizer_props/srsp/stylized/wall/wall_1.vmdl",
+              "RenderType": "Off",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "64d76c1c-9ab2-4563-9bef-885627bc07a6",
+          "Flags": 0,
+          "Name": "wall",
+          "Position": "0,-25,60",
+          "Rotation": "0.7071068,0.7071068,-0.00000003090862,-0.00000003090862",
+          "Scale": "0.2,0.25,0.8",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "53d70735-69e9-4d84-86e6-6c448ceb4d3b",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/reizer_props/srsp/stylized/wall/wall_1.vmdl",
+              "RenderType": "Off",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "25d85035-3948-4172-859c-b438cc9f3308",
+          "Flags": 0,
+          "Name": "pillar",
+          "Position": "-25,-25,60",
+          "Rotation": "1,0,0,-0.00000004371139",
+          "Scale": "0.2,0.2,0.675",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "fc2f2ae5-2a8b-4539-8352-77ffd77bdbc3",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/reizer_props/srsp/stylized/wall/wall_1_column_1.vmdl",
+              "RenderType": "Off",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "5ee909b3-66f1-4125-b06c-1e6ba34ba3eb",
+          "Flags": 0,
+          "Name": "pillar",
+          "Position": "-25,25,60",
+          "Rotation": "1,0,0,-0.00000004371139",
+          "Scale": "0.2,0.2,0.675",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "9cc68c54-85e4-469c-a15a-942517b71d7c",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/reizer_props/srsp/stylized/wall/wall_1_column_1.vmdl",
+              "RenderType": "Off",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "37df6650-1e57-42bc-9d30-78878cff6319",
+          "Flags": 0,
+          "Name": "pillar",
+          "Position": "25,-25,60",
+          "Rotation": "1,0,0,-0.00000004371139",
+          "Scale": "0.2,0.2,0.675",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "1c860c67-52d9-45c4-97e4-a14d63661f14",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/reizer_props/srsp/stylized/wall/wall_1_column_1.vmdl",
+              "RenderType": "Off",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "fe706da7-f47c-4d2e-81cb-5c1404e39fa8",
+          "Flags": 0,
+          "Name": "pillar",
+          "Position": "25,25,60",
+          "Rotation": "1,0,0,-0.00000004371139",
+          "Scale": "0.2,0.2,0.675",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "75f9091c-6b77-4ee1-9383-8105b06a3231",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/reizer_props/srsp/stylized/wall/wall_1_column_1.vmdl",
+              "RenderType": "Off",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "7a4ab2a7-6fe0-4a11-a455-c6fd9b75d656",
+      "Flags": 0,
+      "Name": "MazeBox",
+      "Position": "0,0,3",
+      "Tags": "maze",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "MazeSpawner",
+          "__guid": "a49f2afd-1262-47f9-bfab-9fd10aad8e80",
+          "AddGaps": true,
+          "CellHeight": 50,
+          "CellWidth": 50,
+          "Columns": 5,
+          "Pickup": {
+            "_type": "gameobject",
+            "prefab": "prefabs/pickup.prefab"
+          },
+          "Pillar": {
+            "_type": "gameobject",
+            "prefab": "prefabs/pillar.prefab"
+          },
+          "PillarOffset": 125.5,
+          "Plane": {
+            "_type": "gameobject",
+            "go": "998bcadd-03c8-40d5-9b00-1f3cdac79c07"
+          },
+          "Rows": 5,
+          "Wall": {
+            "_type": "gameobject",
+            "prefab": "prefabs/wall.prefab"
+          },
+          "WallOffset": 100.5
+        },
+        {
+          "__type": "RotationController",
+          "__guid": "39b76479-a715-421b-be81-cab48a266ada",
+          "KB_Sensitivity": 10,
+          "M_Sensitivity": 10,
+          "RotationClamp": 20
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "998bcadd-03c8-40d5-9b00-1f3cdac79c07",
+          "Flags": 0,
+          "Name": "Floor",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "538e8c07-6926-4c1c-9fa8-24d5f875fec8",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/sewer/sewer_floor_01.vmat",
+              "Model": "models/floor.vmdl",
+              "RenderType": "On",
+              "Tint": "0,0,0,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "f9b4102d-718a-4aa3-82d1-ffb82bd551a0",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "314.4,314.4,7",
+              "Static": false,
+              "Surface": "surfaces/concrete.surface"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "ec09a997-b32f-4810-8860-4b4a344c6d77",
+      "Flags": 0,
+      "Name": "BallBox",
+      "Position": "-25,-25,300",
+      "Tags": "hamster",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Rigidbody",
+          "__guid": "73b867b4-f286-4252-8008-2e35a792c637",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        },
+        {
+          "__type": "Sandbox.SphereCollider",
+          "__guid": "1c0797de-8e9d-4b94-bcee-87531639dd9d",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Radius": 12,
+          "Static": false,
+          "Surface": "surfaces/plastic.hollow.surface"
+        },
+        {
+          "__type": "HamsterController",
+          "__guid": "7d897153-731c-4d0b-b2ea-278f29325b9b",
+          "KillHeight": 500,
+          "SceneManager": {
+            "_type": "component",
+            "component_id": "7a4aefcc-c2e4-472c-b14a-3c54c7d25a37",
+            "go": "3c1c177f-2fac-4ea3-bad4-987e43b43d84",
+            "component_type": "SceneManager"
+          }
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "0fa479a9-b9f6-4d3a-a324-1b2f5fa978ac",
+          "Flags": 0,
+          "Name": "HamsterBall",
+          "Position": "0,0,-11.6",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "07af8d85-9460-48a1-b069-694b5cb61607",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/hamsterball.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "97551846-6ff0-4f55-b849-a4280a6fb0b6",
+          "Flags": 0,
+          "Name": "HamsterBox",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "RotationLock",
+              "__guid": "64a6b308-3dc0-4ead-a32e-fb7fa2300d3b"
+            }
+          ],
+          "Children": [
+            {
+              "__guid": "6f42c8eb-f26a-4c91-ae3f-75c589ff3d41",
+              "Flags": 0,
+              "Name": "hampter",
+              "Position": "0,0,-4.8",
+              "Scale": "1.5,1.5,1.5",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "f628f845-ee75-4f93-8e58-c16d68825e6d",
+                  "BodyGroups": 18446744073709551615,
+                  "Model": "models/hampter/hampter.vmdl",
+                  "RenderType": "On",
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "b5043813-d30e-4233-a6d7-f2fcdc0d9171",
+      "Flags": 0,
+      "Name": "GoalBox",
+      "Position": "75.4,280,-40",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "GoalSpawner",
+          "__guid": "7fc8dccf-0ba7-4716-9065-553cf9069ce2",
+          "Test": false,
+          "X_Coords": [
+            -125.4,
+            -75.2,
+            -25,
+            25.2,
+            75.4,
+            125.6
+          ],
+          "Y_Coord": 280,
+          "Z_Coord": 40
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "9064c4bd-b6ef-49fd-8493-e63125aa1f26",
+          "Flags": 0,
+          "Name": "wall",
+          "Position": "25,0,1.5",
+          "Scale": "0.2,0.25,0.3",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "__Prefab": "prefabs/wall.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "c553db8b-d9ce-437c-900d-a74c7dab3015",
+          "Flags": 0,
+          "Name": "wall",
+          "Position": "-25,0,1.5",
+          "Scale": "0.2,0.25,0.3",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "__Prefab": "prefabs/wall.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "94d5b883-adca-4481-9953-01331ec625b6",
+          "Flags": 0,
+          "Name": "wall",
+          "Position": "0,25,1.5",
+          "Rotation": "0,0,0.7071068,0.7071068",
+          "Scale": "0.2,0.25,0.3",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "__Prefab": "prefabs/wall.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "d3f1d567-18da-4717-90d6-cd1d0c52b9d4",
+          "Flags": 0,
+          "Name": "pillar",
+          "Position": "-25,25,1.5",
+          "Scale": "0.2,0.2,0.3",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "__Prefab": "prefabs/pillar.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "b75f955b-0b00-471a-89fa-3f9d1d4d9076",
+          "Flags": 0,
+          "Name": "pillar",
+          "Position": "25,-25,1.5",
+          "Scale": "0.2,0.2,0.3",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "__Prefab": "prefabs/pillar.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "0c3b9d69-be41-40ee-a511-a086835aeffe",
+          "Flags": 0,
+          "Name": "pillar",
+          "Position": "-25,-25,1.5",
+          "Scale": "0.2,0.2,0.3",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "__Prefab": "prefabs/pillar.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "38e09db4-d2c0-4158-b993-79a3cb7d650e",
+          "Flags": 0,
+          "Name": "pillar",
+          "Position": "25,25,1.5",
+          "Scale": "0.2,0.2,0.3",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "__Prefab": "prefabs/pillar.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "39be7bb6-71c8-4121-a7df-516600682aa7",
+          "Flags": 0,
+          "Name": "Goal",
+          "Position": "0,0,10",
+          "Scale": "0.8,0.8,0.2",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "381f7c2b-3e08-4b4b-8721-a435fd38cbf9",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,0"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "eb09a8d2-37c2-42c1-a13b-db43bc771f02",
+              "Center": "0,0,0",
+              "IsTrigger": true,
+              "Scale": "50,50,50",
+              "Static": false
+            }
+          ]
+        },
+        {
+          "__guid": "cf3369c6-40a9-45ef-8674-749ba15b7041",
+          "Flags": 0,
+          "Name": "Floor",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "33e2a0cb-66ec-4633-8bb5-56aa5d84089a",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/sewer/sewer_floor_01.vmat",
+              "Model": "models/goal.vmdl",
+              "RenderType": "On",
+              "Tint": "0.21667,1,0,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "a17abdd3-be2c-4c3e-b156-2ad3e4a8e341",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "64.6,64.6,7.1",
+              "Static": false,
+              "Surface": "surfaces/concrete.surface"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "8be7b73f-70f1-4385-947e-107536b8a367",
+      "Flags": 0,
+      "Name": "UI",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Children": [
+        {
+          "__guid": "97deaea2-4f02-4ce7-968d-25d6e444dc3d",
+          "Flags": 0,
+          "Name": "PlayerHud",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "a51ee401-9a69-40ad-ae18-877fe2712067",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "PlayerHud",
+              "__guid": "b09e9aae-82ef-4a20-8c93-bd0043baa892",
+              "SceneManager": {
+                "_type": "component",
+                "component_id": "7a4aefcc-c2e4-472c-b14a-3c54c7d25a37",
+                "go": "3c1c177f-2fac-4ea3-bad4-987e43b43d84",
+                "component_type": "SceneManager"
+              }
+            },
+            {
+              "__type": "GoalHud",
+              "__guid": "37b74ba1-a540-4478-82a7-0073d9627cfb",
+              "SceneManager": {
+                "_type": "component",
+                "component_id": "7a4aefcc-c2e4-472c-b14a-3c54c7d25a37",
+                "go": "3c1c177f-2fac-4ea3-bad4-987e43b43d84",
+                "component_type": "SceneManager"
+              }
+            },
+            {
+              "__type": "LeaderboardHud",
+              "__guid": "15b8dcdb-9397-46d7-94b6-83ebf2f51c11",
+              "SceneManager": {
+                "_type": "component",
+                "component_id": "7a4aefcc-c2e4-472c-b14a-3c54c7d25a37",
+                "go": "3c1c177f-2fac-4ea3-bad4-987e43b43d84",
+                "component_type": "SceneManager"
+              }
+            },
+            {
+              "__type": "TutorialHud",
+              "__guid": "4944af96-de41-476c-a8a8-a968311a3776",
+              "Progress": 500,
+              "SceneManager": {
+                "_type": "component",
+                "component_id": "7a4aefcc-c2e4-472c-b14a-3c54c7d25a37",
+                "go": "3c1c177f-2fac-4ea3-bad4-987e43b43d84",
+                "component_type": "SceneManager"
+              },
+              "Texts": [
+                "move your mouse around",
+                "you can also use WSAD",
+                "drag using left mouse button",
+                "you can also use E and Q",
+                "collect 4 gold bars",
+                "reach the goal platform twice",
+                "get as many points as possible"
+              ]
+            },
+            {
+              "__type": "Sandbox.SoundPointComponent",
+              "__guid": "b9a586b1-9e7a-4828-b73a-b8b4f7eb8702",
+              "DistanceAttenuation": false,
+              "DistanceAttenuationOverride": false,
+              "Force2d": true,
+              "MaxRepeatTime": 1,
+              "MinRepeatTime": 1,
+              "Occlusion": false,
+              "OcclusionOverride": false,
+              "OcclusionRadius": 32,
+              "Pitch": 1,
+              "PlayOnStart": true,
+              "ReflectionOverride": false,
+              "Reflections": false,
+              "Repeat": false,
+              "SoundEvent": "sound/farty-mcsty.sound",
+              "SoundOverride": true,
+              "StopOnNew": false,
+              "TargetMixer": {
+                "Name": "unknown",
+                "Id": "00000000-0000-0000-0000-000000000000"
+              },
+              "Volume": 0.3
+            }
+          ]
+        },
+        {
+          "__guid": "edb71fe6-4f74-451e-ad15-8efda43cc71c",
+          "Flags": 0,
+          "Name": "GimbalHud",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "a13f9d3d-c50c-491e-b8dd-eb55a4d0324e",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "GimbalHud",
+              "__guid": "770f5b66-749f-467d-bd8e-066e752146b4",
+              "MazeBox": {
+                "_type": "gameobject",
+                "go": "7a4ab2a7-6fe0-4a11-a455-c6fd9b75d656"
+              }
+            }
+          ]
+        },
+        {
+          "__guid": "f0c7d8c5-04df-4f90-829b-3eb38abf56d6",
+          "Flags": 0,
+          "Name": "PauseMenu",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "ede4f5df-1d9a-45c2-a005-df27e1a26fcb",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 50
+            },
+            {
+              "__type": "PauseMenu",
+              "__guid": "f4d71f6b-56eb-4c72-9bef-8fd521abc70a",
+              "PlayerHud": {
+                "_type": "gameobject",
+                "go": "97deaea2-4f02-4ce7-968d-25d6e444dc3d"
+              },
+              "RotationController": {
+                "_type": "component",
+                "component_id": "39b76479-a715-421b-be81-cab48a266ada",
+                "go": "7a4ab2a7-6fe0-4a11-a455-c6fd9b75d656",
+                "component_type": "RotationController"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 60,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "minimal",
+  "Description": "",
+  "LastSaved": "2024-06-30T00:31:37.5425411\u002B02:00",
+  "ResourceVersion": 1,
+  "__references": [
+    "agentab.alienred",
+    "apetavern.wlb_sewer_floor",
+    "fish.hs_hampter",
+    "igrotronika.coin3",
+    "igrotronika.magic2",
+    "life.jump_sfx",
+    "reizer.wall_1_column_1a",
+    "reizer.wall_1a",
+    "tesa.hamsterball"
+  ],
+  "__version": 1
+}

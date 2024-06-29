@@ -1,0 +1,55 @@
+GoalHud {
+	position: absolute;
+	left: 0;
+	right: 0;
+	font-family: Tannenberg Fett;
+	font-size: 24px;
+
+	> .goal {
+		position: absolute;
+		top: 30vh;
+		left: 50%;
+		transform: translateX(-50%);
+		font-size: 0vh;
+		text-stroke: 8px black;
+		font-weight: bold;
+		letter-spacing: 9px;
+		color: white;
+
+		span.animate {
+			animation: pop 0.8s;
+		}
+	}
+}
+
+@keyframes pop {
+	20% {
+		font-size: 0vh;
+		transform: translate(0, -15vh);
+	}
+
+	35% {
+		font-size: 15vh;
+		transform: translate(0, 0);
+	}
+
+	50% {
+		font-size: 10vh;
+		transform: translate(0, -50vh);
+	}
+
+	70% {
+		font-size: 10vh;
+		transform: translate(0, -50vh);
+	}
+
+	85% {
+		font-size: 15vh;
+		transform: translate(0, 0);
+	}
+
+	100% {
+		font-size: 0vh;
+		transform: translate(0, -150vh);
+	}
+}
