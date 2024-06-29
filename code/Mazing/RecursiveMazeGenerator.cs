@@ -53,7 +53,7 @@ public class RecursiveMazeAlgorithm : BasicMazeGenerator
 				GetMazeCell( row, column ).WallLeft = true;
 			}
 
-			// check move backward
+			// check move backwards
 			if ( row > 0 && row - 1 >= 0 && !GetMazeCell( row - 1, column ).IsVisited )
 			{
 				movesAvailable[movesAvailableCount] = Direction.Back;
