@@ -4,6 +4,7 @@ using Sandbox.Services;
 public sealed class HamsterController : Component, Component.ITriggerListener
 {
 	[Property] SceneManager SceneManager { get; set; }
+	[Property] RotationController RotationController { get; set; }
 	[Property] public float KillHeight { get; set; } = 500;
 
 	private void PlaySound( SoundEvent e, float pitch, float volume )
@@ -23,6 +24,8 @@ public sealed class HamsterController : Component, Component.ITriggerListener
 	{
 		SceneManager.MazeSpawner.Maze();
 		SceneManager.GoalSpawner.Goal();
+		RotationController.IsResetting = true;
+		RotationController.RotationReset();
 		Transform.Position = SceneManager.SpawnTarget.Transform.Position;
 
 		Stats.SetValue( "highscore", SceneManager.Golds );

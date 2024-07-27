@@ -3,8 +3,8 @@
   "Type": "game",
   "Org": "daark",
   "Ident": "hamsterescape",
-  "Tags": "hamster escape maze",
   "Schema": 1,
+  "IncludeSourceFiles": false,
   "Resources": null,
   "PackageReferences": [],
   "EditorReferences": null,
@@ -86,7 +86,7 @@
           "GroupName": "Actions"
         },
         {
-          "Name": "reload",
+          "Name": "Rotation Reset",
           "KeyboardCode": "r",
           "GamepadCode": "X",
           "GroupName": "Actions"

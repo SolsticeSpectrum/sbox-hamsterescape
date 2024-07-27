@@ -8,8 +8,6 @@
       "Rotation": "-0.0000000377291,0.6329893,0.0000000000000005185386,0.774161",
       "Tags": "light_directional,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.DirectionalLight",
@@ -28,8 +26,6 @@
       "Name": "2D Skybox",
       "Tags": "skybox",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SkyBox2D",
@@ -65,8 +61,6 @@
       "Position": "-300,0,500",
       "Rotation": "-0.00000001315013,0.5,0.000000004663518,0.8660254",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",
@@ -93,8 +87,6 @@
       "Name": "GameManager",
       "Position": "-150,-0.000001521804,240.1924",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "SceneManager",
@@ -135,8 +127,6 @@
       "Name": "Spawn",
       "Position": "-25,-25,300",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Children": [
         {
           "__guid": "d9176fb2-a6ed-4546-bfd4-0eb2cffc0671",
@@ -146,8 +136,6 @@
           "Rotation": "1,0,0,-0.00000004371139",
           "Scale": "0.2,0.25,0.8",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ModelRenderer",
@@ -167,8 +155,6 @@
           "Rotation": "1,0,0,-0.00000004371139",
           "Scale": "0.2,0.25,0.8",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ModelRenderer",
@@ -188,8 +174,6 @@
           "Rotation": "0.7071068,0.7071068,-0.00000003090862,-0.00000003090862",
           "Scale": "0.2,0.25,0.8",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ModelRenderer",
@@ -209,8 +193,6 @@
           "Rotation": "0.7071068,0.7071068,-0.00000003090862,-0.00000003090862",
           "Scale": "0.2,0.25,0.8",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ModelRenderer",
@@ -230,8 +212,6 @@
           "Rotation": "1,0,0,-0.00000004371139",
           "Scale": "0.2,0.2,0.675",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ModelRenderer",
@@ -251,8 +231,6 @@
           "Rotation": "1,0,0,-0.00000004371139",
           "Scale": "0.2,0.2,0.675",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ModelRenderer",
@@ -272,8 +250,6 @@
           "Rotation": "1,0,0,-0.00000004371139",
           "Scale": "0.2,0.2,0.675",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ModelRenderer",
@@ -293,8 +269,6 @@
           "Rotation": "1,0,0,-0.00000004371139",
           "Scale": "0.2,0.2,0.675",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ModelRenderer",
@@ -315,8 +289,6 @@
       "Position": "0,0,3",
       "Tags": "maze",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "MazeSpawner",
@@ -348,8 +320,10 @@
         {
           "__type": "RotationController",
           "__guid": "39b76479-a715-421b-be81-cab48a266ada",
+          "IsResetting": false,
           "KB_Sensitivity": 10,
           "M_Sensitivity": 10,
+          "ResetSpeed": 10,
           "RotationClamp": 20
         }
       ],
@@ -360,8 +334,6 @@
           "Name": "Floor",
           "Position": "0,0,0",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ModelRenderer",
@@ -392,8 +364,6 @@
       "Position": "-25,-25,300",
       "Tags": "hamster",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Rigidbody",
@@ -420,6 +390,12 @@
           "__type": "HamsterController",
           "__guid": "7d897153-731c-4d0b-b2ea-278f29325b9b",
           "KillHeight": 500,
+          "RotationController": {
+            "_type": "component",
+            "component_id": "39b76479-a715-421b-be81-cab48a266ada",
+            "go": "7a4ab2a7-6fe0-4a11-a455-c6fd9b75d656",
+            "component_type": "RotationController"
+          },
           "SceneManager": {
             "_type": "component",
             "component_id": "7a4aefcc-c2e4-472c-b14a-3c54c7d25a37",
@@ -435,8 +411,6 @@
           "Name": "HamsterBall",
           "Position": "0,0,-11.6",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ModelRenderer",
@@ -454,8 +428,6 @@
           "Name": "HamsterBox",
           "Position": "0,0,0",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "RotationLock",
@@ -470,8 +442,6 @@
               "Position": "0,0,-4.8",
               "Scale": "1.5,1.5,1.5",
               "Enabled": true,
-              "NetworkMode": 2,
-              "NetworkInterpolation": true,
               "Components": [
                 {
                   "__type": "Sandbox.ModelRenderer",
@@ -493,8 +463,6 @@
       "Name": "GoalBox",
       "Position": "75.4,280,-40",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "GoalSpawner",
@@ -520,8 +488,6 @@
           "Position": "25,0,1.5",
           "Scale": "0.2,0.25,0.3",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "__Prefab": "prefabs/wall.prefab",
           "__PrefabVariables": {}
         },
@@ -532,8 +498,6 @@
           "Position": "-25,0,1.5",
           "Scale": "0.2,0.25,0.3",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "__Prefab": "prefabs/wall.prefab",
           "__PrefabVariables": {}
         },
@@ -545,8 +509,6 @@
           "Rotation": "0,0,0.7071068,0.7071068",
           "Scale": "0.2,0.25,0.3",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "__Prefab": "prefabs/wall.prefab",
           "__PrefabVariables": {}
         },
@@ -557,8 +519,6 @@
           "Position": "-25,25,1.5",
           "Scale": "0.2,0.2,0.3",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "__Prefab": "prefabs/pillar.prefab",
           "__PrefabVariables": {}
         },
@@ -569,8 +529,6 @@
           "Position": "25,-25,1.5",
           "Scale": "0.2,0.2,0.3",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "__Prefab": "prefabs/pillar.prefab",
           "__PrefabVariables": {}
         },
@@ -581,8 +539,6 @@
           "Position": "-25,-25,1.5",
           "Scale": "0.2,0.2,0.3",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "__Prefab": "prefabs/pillar.prefab",
           "__PrefabVariables": {}
         },
@@ -593,8 +549,6 @@
           "Position": "25,25,1.5",
           "Scale": "0.2,0.2,0.3",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "__Prefab": "prefabs/pillar.prefab",
           "__PrefabVariables": {}
         },
@@ -605,8 +559,6 @@
           "Position": "0,0,10",
           "Scale": "0.8,0.8,0.2",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ModelRenderer",
@@ -632,8 +584,6 @@
           "Name": "Floor",
           "Position": "0,0,0",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ModelRenderer",
@@ -662,16 +612,12 @@
       "Flags": 0,
       "Name": "UI",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Children": [
         {
           "__guid": "97deaea2-4f02-4ce7-968d-25d6e444dc3d",
           "Flags": 0,
           "Name": "PlayerHud",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ScreenPanel",
@@ -726,6 +672,7 @@
                 "you can also use WSAD",
                 "drag using left mouse button",
                 "you can also use E and Q",
+                "press R to reset rotation",
                 "collect 4 gold bars",
                 "reach the goal platform twice",
                 "get as many points as possible"
@@ -763,8 +710,6 @@
           "Flags": 0,
           "Name": "GimbalHud",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ScreenPanel",
@@ -789,8 +734,6 @@
           "Flags": 0,
           "Name": "PauseMenu",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ScreenPanel",
@@ -842,7 +785,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-07-01T23:33:08.4038423\u002B02:00",
   "ResourceVersion": 1,
   "__references": [
     "agentab.alienred",

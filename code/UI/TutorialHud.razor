@@ -23,6 +23,7 @@
 		"you can also use WSAD",
 		"drag using left mouse button",
 		"you can also use E and Q",
+		"press R to reset rotation",
 		"collect 4 gold bars",
 		"reach the goal platform twice",
 		"get as many points as possible"
@@ -37,6 +38,9 @@
 	private long gold = 0;
 	private int wins = 0;
 	private int tutorial = 1;
+	private bool first = false;
+	private float cooldown = 2f;
+	private TimeSince last = 0;
 
 	protected override int BuildHash()
 	{
@@ -83,6 +87,27 @@
 		Next();
 	}
 
+	private void Reset( bool reset )
+	{
+		if ( !reset && Input.Pressed( "Rotation Reset" ) && last > cooldown )
+		{
+			last = 0;
+
+			if ( !first )
+			{
+				bar += Progress / 2;
+				first = true;
+			}
+			else
+			{
+				bar += Progress / 2;
+				first = false;
+
+				Next();
+			}
+		}
+	}
+
 	private void Finish()
 	{
 		if ( TimeSince > 5 )
@@ -102,7 +127,7 @@
 			text = Texts[tutorial - 1];
 			bar = 0f;
 
-			if ( tutorial == 7 ) { TimeSince = 0; Visible = !Visible; }
+			if ( tutorial == 8 ) { TimeSince = 0; Visible = !Visible; }
 		}
 	}
 
@@ -114,12 +139,16 @@
 				Controls();
 				break;
 			case 5:
-				Goal( false );
+				Reset( false );
 				break;
 			case 6:
-				Goal( true );
+				Reset( true );
+				Goal( false );
 				break;
 			case 7:
+				Goal( true );
+				break;
+			case 8:
 				Finish();
 				break;
 		}

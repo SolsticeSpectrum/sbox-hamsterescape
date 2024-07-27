@@ -15,7 +15,7 @@
 						[
 							{
 								from = "material.001.vmat"
-								to = "materials/shared/colors/red_shiny.vmat"
+								to = "materials/red.vmat"
 							},
 							{
 								from = "material.004.vmat"
@@ -23,11 +23,11 @@
 							},
 							{
 								from = "material.003.vmat"
-								to = "materials/shared/colors/green_shiny.vmat"
+								to = "materials/green.vmat"
 							},
 							{
 								from = "material.002.vmat"
-								to = "materials/shared/colors/blue_shiny.vmat"
+								to = "materials/blue.vmat"
 							},
 						]
 						use_global_default = false
