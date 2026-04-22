@@ -11,9 +11,9 @@ public sealed class RotationLock : Component
 
 	protected override void OnUpdate()
 	{
-		float yaw = Transform.Rotation.Yaw();
+		float yaw = WorldRotation.Yaw();
 		float dest = rb.Velocity.WithZ( 0f ).EulerAngles.yaw;
 		yaw = yaw.LerpDegreesTo( dest, Time.Delta * 3f );
-		Transform.Rotation = new Angles( 0, yaw, 0 );
+		WorldRotation = new Angles( 0, yaw, 0 );
 	}
 }

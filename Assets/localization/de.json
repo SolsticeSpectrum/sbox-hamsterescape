@@ -1,0 +1,48 @@
+{
+	"menu.paused": "Pausiert",
+	"menu.resume": "Fortsetzen",
+	"menu.settings": "Einstellungen",
+	"menu.controls": "Steuerung",
+	"menu.credits": "Mitwirkende",
+	"menu.quit": "Beenden",
+	"menu.back": "Zurück",
+
+	"settings.mouse_sensitivity": "Mausempfindlichkeit",
+	"settings.keyboard_sensitivity": "Tastaturempfindlichkeit",
+	"settings.music_volume": "Musiklautstärke",
+	"settings.language": "Sprache",
+
+	"controls.tilt_forward": "Nach vorne neigen",
+	"controls.tilt_backward": "Nach hinten neigen",
+	"controls.tilt_left": "Nach links neigen",
+	"controls.tilt_right": "Nach rechts neigen",
+	"controls.spin_button": "Drehen (halten)",
+	"controls.spin_left": "Nach links drehen",
+	"controls.spin_right": "Nach rechts drehen",
+	"controls.rotation_reset": "Rotation zurücksetzen",
+	"controls.leaderboard": "Bestenliste",
+	"controls.press_key": "…",
+	"controls.reset_defaults": "Standardwerte",
+	"controls.defaults_reset": "zurückgesetzt",
+
+	"credits.intro": "Dank an die Mitglieder der s&box-Community",
+	"credits.conclusion": "Ohne sie gäbe es dieses Spiel nicht",
+
+	"debug.title": "Debug",
+	"debug.delete_tutorial": "tutorial.txt löschen",
+	"debug.delete_settings": "settings.txt löschen",
+	"debug.tutorial_deleted": "gelöscht",
+	"debug.settings_deleted": "gelöscht",
+
+	"leaderboard.title": "Bestenliste",
+	"leaderboard.hide_hint": "{Leaderboard} zum Verbergen drücken",
+
+	"tutorial.move_mouse": "Bewege die Maus",
+	"tutorial.wsad": "Du kannst auch {TiltForward}{TiltLeft}{TiltBackward}{TiltRight} verwenden",
+	"tutorial.drag_lmb": "Ziehen mit {SpinButton}",
+	"tutorial.eq": "Du kannst auch {SpinLeft} und {SpinRight} verwenden",
+	"tutorial.reset": "{RotationReset} drücken zum Zurücksetzen",
+	"tutorial.collect_gold": "Sammle 4 Goldbarren",
+	"tutorial.reach_goal": "Erreiche die Zielplattform zweimal",
+	"tutorial.max_points": "Erziele möglichst viele Punkte"
+}

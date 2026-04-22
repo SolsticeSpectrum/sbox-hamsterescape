@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public sealed class GoalSpawner : Component
 {
-	[Property] public List<float> X_Coords { get; set; } = new List<float>
+	[Property] public List<float> XCoords { get; set; } = new List<float>
 	{
 		-125.4f,
 		-75.2f,
@@ -13,8 +13,8 @@ public sealed class GoalSpawner : Component
 		75.4f,
 		125.6f
 	};
-	[Property, Range( 0, 300, 0 )] public float Y_Coord { get; set; } = 280;
-	[Property, Range( 0, 50, 0 )] public float Z_Coord { get; set; } = 40;
+	[Property, Range( 0, 300 )] public float YCoord { get; set; } = 280;
+	[Property, Range( 0, 50 )] public float ZCoord { get; set; } = 40;
 	[Property] public bool Test { get; set; } = false;
 
 	protected override void OnStart()
@@ -24,16 +24,15 @@ public sealed class GoalSpawner : Component
 
 	public void Goal()
 	{
-		float xCoord = X_Coords[Game.Random.Int( X_Coords.Count - 1 )];
+		float x = XCoords[Game.Random.Int( XCoords.Count - 1 )];
+		float y = ( Game.Random.Int( 1 ) == 0 ) ? -YCoord : YCoord;
+		float z = -ZCoord;
 
-		float yCoord = ( Game.Random.Int( 1 ) == 0 ) ? -Y_Coord : Y_Coord;
-		float zCoord = -Z_Coord;
-
-		if ( yCoord == -Y_Coord ) Transform.Rotation = Rotation.FromYaw( 180 );
-		else Transform.Rotation = Rotation.Identity;
+		if ( y == -YCoord ) WorldRotation = Rotation.FromYaw( 180 );
+		else WorldRotation = Rotation.Identity;
 
 		GameObject.Enabled = false;
-		Transform.Position = new Vector3( xCoord, Test ? 200 : yCoord, zCoord );
+		WorldPosition = new Vector3( x, Test ? 200 : y, z );
 		GameObject.Enabled = true;
 	}
 }

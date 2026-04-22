@@ -8,12 +8,14 @@ public sealed class SceneManager : Component
 	[Property] public GameObject GoalTarget { get; set; }
 	[Property] public MazeSpawner MazeSpawner { get; set; }
 	[Property] public GoalSpawner GoalSpawner { get; set; }
+	[Property] public RotationController RotationController { get; set; }
 	[Property] public SoundEvent PickupSound { get; set; }
 	[Property] public SoundEvent WinSound { get; set; }
 	[Property] public SoundEvent DeathSound { get; set; }
 	[Property] public long HighScore { get; set; } = 0;
 	[Property] public long Golds { get; set; } = 0;
 	[Property] public int Wins { get; set; } = 0;
+	[Property] public float KillHeight { get; set; } = 500;
 
 	public TimeSince TimeAlive { get; set; } = 0;
 	public Leaderboards.Board Leaderboard;

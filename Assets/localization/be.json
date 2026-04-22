@@ -1,0 +1,48 @@
+{
+	"menu.paused": "Прыпынена",
+	"menu.resume": "Працягнуць",
+	"menu.settings": "Налады",
+	"menu.controls": "Кіраванне",
+	"menu.credits": "Падзякі",
+	"menu.quit": "Выйсці",
+	"menu.back": "Назад",
+
+	"settings.mouse_sensitivity": "адчувальнасць мышы",
+	"settings.keyboard_sensitivity": "адчувальнасць клавіятуры",
+	"settings.music_volume": "гучнасць музыкі",
+	"settings.language": "мова",
+
+	"controls.tilt_forward": "Нахіл уперад",
+	"controls.tilt_backward": "Нахіл назад",
+	"controls.tilt_left": "Нахіл улева",
+	"controls.tilt_right": "Нахіл управа",
+	"controls.spin_button": "Кручэнне (трымаць)",
+	"controls.spin_left": "Круціць улева",
+	"controls.spin_right": "Круціць управа",
+	"controls.rotation_reset": "Скінуць кручэнне",
+	"controls.leaderboard": "Табліца лідараў",
+	"controls.press_key": "…",
+	"controls.reset_defaults": "Па змаўчанні",
+	"controls.defaults_reset": "скінута",
+
+	"credits.intro": "дзякуй удзельнікам супольнасці s&box",
+	"credits.conclusion": "без іх гэтай гульні не было б",
+
+	"debug.title": "Debug",
+	"debug.delete_tutorial": "Выдаліць tutorial.txt",
+	"debug.delete_settings": "Выдаліць settings.txt",
+	"debug.tutorial_deleted": "выдалена",
+	"debug.settings_deleted": "выдалена",
+
+	"leaderboard.title": "Табліца лідараў",
+	"leaderboard.hide_hint": "націсні {Leaderboard} каб схаваць",
+
+	"tutorial.move_mouse": "У Іўі худы жвавы чорт у зялёнай камізэльцы пабег пад’есці фаршу з юшкай.",
+	"tutorial.wsad": "таксама можна {TiltForward}{TiltLeft}{TiltBackward}{TiltRight}",
+	"tutorial.drag_lmb": "цягні {SpinButton}",
+	"tutorial.eq": "таксама {SpinLeft} і {SpinRight}",
+	"tutorial.reset": "{RotationReset} каб скінуць",
+	"tutorial.collect_gold": "збяры 4 залатыя зліткі",
+	"tutorial.reach_goal": "дасягні мэты двойчы",
+	"tutorial.max_points": "набяры як мага больш ачкоў"
+}

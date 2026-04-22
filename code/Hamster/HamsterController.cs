@@ -1,15 +1,13 @@
 using Sandbox;
 using Sandbox.Services;
 
-public sealed class HamsterController : Component, Component.ITriggerListener
+public sealed class HamsterController : Component
 {
-	[Property] SceneManager SceneManager { get; set; }
-	[Property] RotationController RotationController { get; set; }
-	[Property] public float KillHeight { get; set; } = 500;
+	[Property] public SceneManager SceneManager { get; set; }
 
 	private void PlaySound( SoundEvent e, float pitch, float volume )
 	{
-		var sound = Sound.Play( e, Transform.World.Position );
+		var sound = Sound.Play( e, WorldPosition );
 		sound.Pitch = pitch;
 		sound.Volume = volume;
 	}
@@ -24,9 +22,8 @@ public sealed class HamsterController : Component, Component.ITriggerListener
 	{
 		SceneManager.MazeSpawner.Maze();
 		SceneManager.GoalSpawner.Goal();
-		RotationController.IsResetting = true;
-		RotationController.RotationReset();
-		Transform.Position = SceneManager.SpawnTarget.Transform.Position;
+		SceneManager.RotationController.SnapToIdentity();
+		WorldPosition = SceneManager.SpawnTarget.WorldPosition;
 
 		Stats.SetValue( "highscore", SceneManager.Golds );
 
@@ -37,37 +34,29 @@ public sealed class HamsterController : Component, Component.ITriggerListener
 		}
 	}
 
+	public void PickupGold()
+	{
+		if ( SceneManager.PickupSound != null ) PlaySound( SceneManager.PickupSound, 2, 2.5f );
+		SceneManager.Golds += 5;
+	}
+
+	public void ReachGoal()
+	{
+		if ( SceneManager.WinSound != null ) PlaySound( SceneManager.WinSound, 2, .1f );
+		SceneManager.Golds += 100;
+		SceneManager.Wins += 1;
+		AsyncRespawn();
+	}
+
 	protected override void OnUpdate()
 	{
-		if ( Transform.Position.z < -KillHeight
-			|| Transform.Position.z > KillHeight )
+		if ( WorldPosition.z < -SceneManager.KillHeight
+			|| WorldPosition.z > SceneManager.KillHeight )
 		{
 			if ( SceneManager.DeathSound != null ) PlaySound( SceneManager.DeathSound, 1.5f, 1.5f );
 			Respawn();
 		}
 
 		if ( SceneManager.Golds > SceneManager.HighScore ) SceneManager.HighScore = SceneManager.Golds;
-	}
-
-	void ITriggerListener.OnTriggerEnter( Collider other )
-	{
-		if ( other.GameObject == SceneManager.GoalTarget )
-		{
-			if ( SceneManager.WinSound != null ) PlaySound( SceneManager.WinSound, 2, .1f );
-			SceneManager.Golds += 100;
-			SceneManager.Wins += 1;
-			AsyncRespawn();
-		}
-
-		if ( other.Tags.Has( "gold" ) )
-		{
-			if ( SceneManager.PickupSound != null ) PlaySound( SceneManager.PickupSound, 2, 2.5f );
-			SceneManager.Golds += 5;
-			other.GameObject.Destroy();
-		}
-	}
-
-	void ITriggerListener.OnTriggerExit( Collider other )
-	{
 	}
 }

@@ -1,0 +1,11 @@
+DebugPage {
+	flex-direction: column;
+	align-items: center;
+	gap: 2vh;
+
+	> .rows {
+		flex-direction: column;
+		align-items: center;
+		gap: 1vh;
+	}
+}

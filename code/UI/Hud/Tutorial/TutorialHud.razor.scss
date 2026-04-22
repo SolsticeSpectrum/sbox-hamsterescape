@@ -1,0 +1,37 @@
+TutorialHud {
+	position: absolute;
+	top: 3vh;
+	left: 0;
+	right: 0;
+	justify-content: center;
+	font-family: Hamster-9fc7a5;
+	pointer-events: none;
+
+	> .tutorial {
+		flex-direction: column;
+		align-items: center;
+		font-size: 4.5vh;
+		font-weight: bold;
+		text-stroke: 7px black;
+		letter-spacing: 6px;
+		color: white;
+
+		p {
+			text-align: center;
+		}
+
+		.progress-bar {
+			width: 500px;
+			height: 20px;
+			background-color: rgba(black, 0.8);
+			border-radius: 10px;
+			margin-top: 20px;
+
+			.progress {
+				height: 100%;
+				background-color: limegreen;
+				border-radius: 10px;
+			}
+		}
+	}
+}

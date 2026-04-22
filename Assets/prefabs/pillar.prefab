@@ -1,32 +1,82 @@
 {
   "RootObject": {
-    "Id": "4467538e-0528-4246-b9cc-25897751a066",
+    "__guid": "4467538e-0528-4246-b9cc-25897751a066",
+    "__version": 2,
+    "Flags": 0,
     "Name": "pillar",
+    "Position": "0,0,0",
+    "Rotation": "0,0,0,1",
     "Scale": "0.2,0.2,0.3",
+    "Tags": "",
     "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkFlags": 0,
+    "NetworkOrphaned": 0,
+    "NetworkTransmit": true,
+    "OwnerTransfer": 1,
     "Components": [
       {
-        "__type": "ModelRenderer",
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "c5fe70f5-836a-448f-8bd0-6861bf853230",
+        "__enabled": true,
+        "Flags": 0,
         "BodyGroups": 18446744073709551615,
         "Model": "models/reizer_props/srsp/stylized/wall/wall_1_column_1.vmdl",
         "RenderType": "On",
-        "Tint": "1,1,1,1"
+        "Tint": "1,1,1,1",
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
       },
       {
-        "__type": "BoxCollider",
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "414a10e4-991e-4e2c-ac8e-369fe1389afb",
+        "__enabled": true,
+        "Flags": 0,
         "Center": "0,0,85",
         "IsTrigger": false,
         "Scale": "33,33,170",
         "Static": false,
-        "Surface": "surfaces/brick.surface"
+        "Surface": "surfaces/brick.surface",
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
       }
     ],
-    "Children": []
+    "Children": [],
+    "__variables": [],
+    "__properties": {
+      "NetworkInterpolation": true,
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
   "__references": [
     "reizer.wall_1_column_1a"
-  ]
+  ],
+  "ResourceVersion": 2,
+  "DontBreakAsTemplate": false,
+  "__version": 2
 }

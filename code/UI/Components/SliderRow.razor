@@ -1,0 +1,15 @@
+@using Sandbox;
+@using Sandbox.UI;
+@namespace Sandbox
+@inherits Panel
+
+<root>
+	<label>@Label</label>
+	<div class="control">@Slider</div>
+</root>
+
+@code
+{
+	[Parameter] public string Label { get; set; }
+	[Parameter] public RenderFragment Slider { get; set; }
+}

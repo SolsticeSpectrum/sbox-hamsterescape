@@ -1,0 +1,62 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@namespace Sandbox
+@inherits Panel
+
+<root>
+	<PageTitle Text=@L.T("menu.controls") />
+	<div class="columns">
+		<div class="column">
+			@foreach ( var action in LeftColumn )
+			{
+				<KeybindRow Label="@L.T(InputBindings.LocalizationKey(action))"
+							Key="@InputBindings.GetDisplayKey(action)"
+							IsRebinding=@(rebinding == action)
+							Clicked=@(() => BeginRebind(action)) />
+			}
+		</div>
+		<div class="column">
+			@foreach ( var action in RightColumn )
+			{
+				<KeybindRow Label="@L.T(InputBindings.LocalizationKey(action))"
+							Key="@InputBindings.GetDisplayKey(action)"
+							IsRebinding=@(rebinding == action)
+							Clicked=@(() => BeginRebind(action)) />
+			}
+		</div>
+	</div>
+	<div class="footer">
+		<MenuButton Text=@L.T("controls.reset_defaults") Clicked=@ResetBindings />
+		<MenuButton Text=@L.T("menu.back") Clicked=@Nav.To(Layout.Page.Main) />
+	</div>
+</root>
+
+@code
+{
+	[Parameter] public Layout Layout { get; set; }
+	[Parameter] public Navigator<Layout.Page> Nav { get; set; }
+
+	private string rebinding;
+
+	private IEnumerable<string> LeftColumn => InputBindings.RebindableActions.Take( 5 );
+	private IEnumerable<string> RightColumn => InputBindings.RebindableActions.Skip( 5 );
+
+	private void BeginRebind( string action )
+	{
+		if ( rebinding == action ) return;
+		rebinding = action;
+		InputBindings.Rebind( action, () => rebinding = null );
+	}
+
+	private void ResetBindings()
+	{
+		InputBindings.ResetAll();
+		rebinding = null;
+		Layout.Toast.Show( L.T( "controls.defaults_reset" ) );
+	}
+
+	protected override int BuildHash() => System.HashCode.Combine( rebinding, L.CurrentCode, InputBindings.Version );
+}

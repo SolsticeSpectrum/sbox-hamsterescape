@@ -1,0 +1,55 @@
+KeybindRow {
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	width: 40vw;
+	height: 6vh;
+
+	> label {
+		font-size: 3.5vh;
+		width: 24vw;
+		text-align: right;
+		padding-right: 1vw;
+		border-right: 2px solid rgba(white, 0.3);
+		color: white;
+	}
+
+	> .bind {
+		margin-left: 1vw;
+		width: 12vw;
+		height: 5vh;
+		padding: 0 1vw;
+		border-radius: 10px;
+		background-color: rgba(black, 0.5);
+		backdrop-filter: blur(4px);
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		overflow: hidden;
+
+		> .text {
+			font-size: 2.8vh;
+			color: white;
+			transform: scale(0.85);
+			transition: transform 0.1s ease, color 0.1s ease;
+		}
+
+		&:hover > .text {
+			color: orange;
+			transform: rotate(-2deg) scale(1);
+			sound-in: ui.button.over;
+		}
+
+		&:active {
+			sound-in: ui.button.press;
+		}
+
+		&.rebinding > .text {
+			color: orange;
+		}
+
+		&.rebinding:hover > .text {
+			transform: scale(0.85);
+		}
+	}
+}

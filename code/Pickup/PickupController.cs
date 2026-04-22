@@ -1,27 +1,35 @@
 ﻿using Sandbox;
 using System;
 
-public sealed class PickupController : Component
+public sealed class PickupController : Component, Component.ITriggerListener
 {
-	private int rngOffset = Game.Random.Int( 1, 5 );
-	private float rngYaw = Game.Random.Rotation().Yaw();
-	private float initPos;
+	private int offset = Game.Random.Int( 1, 5 );
+	private float yaw = Game.Random.Rotation().Yaw();
+	private float origin;
 
 	protected override void OnStart()
 	{
-		initPos = Transform.LocalPosition.z;
-		Transform.LocalRotation = Rotation.FromYaw( rngYaw );
+		origin = LocalPosition.z;
+		LocalRotation = Rotation.FromYaw( yaw );
 	}
 
 	protected override void OnUpdate()
 	{
-		var angles = Transform.LocalRotation.Angles();
+		var angles = LocalRotation.Angles();
 		angles.yaw += .2f;
-		Transform.LocalRotation = angles.ToRotation();
+		LocalRotation = angles.ToRotation();
 
-		float verticalOffset = MathF.Sin( Time.Now * 2 + rngOffset ) * 7;
-		Transform.LocalPosition = new Vector3( Transform.LocalPosition.x, 
-			Transform.LocalPosition.y, 
-			initPos + verticalOffset );
+		float bob = MathF.Sin( Time.Now * 2 + offset ) * 7;
+		LocalPosition = new Vector3( LocalPosition.x,
+			LocalPosition.y,
+			origin + bob );
+	}
+
+	void Component.ITriggerListener.OnTriggerEnter( Collider other )
+	{
+		var hamster = other.GameObject.Components.Get<HamsterController>();
+		if ( hamster is null ) return;
+		hamster.PickupGold();
+		GameObject.Destroy();
 	}
 }

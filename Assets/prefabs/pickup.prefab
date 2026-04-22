@@ -1,37 +1,94 @@
 {
   "RootObject": {
-    "Id": "9f67177f-08ac-4963-a39d-97c0a2aa7eb9",
+    "__guid": "9f67177f-08ac-4963-a39d-97c0a2aa7eb9",
+    "__version": 2,
+    "Flags": 0,
     "Name": "pickup",
+    "Position": "0,0,0",
+    "Rotation": "0,0,0,1",
     "Scale": "1.5,1.5,1.5",
     "Tags": "gold",
     "Enabled": true,
     "NetworkMode": 2,
+    "NetworkFlags": 0,
+    "NetworkOrphaned": 0,
+    "NetworkTransmit": true,
+    "OwnerTransfer": 1,
     "Components": [
       {
-        "__type": "ModelRenderer",
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "60028bf4-3088-49f9-b974-053d024fa882",
+        "__enabled": true,
+        "Flags": 0,
         "BodyGroups": 18446744073709551615,
         "MaterialOverride": "materials/mymaterials/gold_bar.vmat",
         "Model": "models/mymodels/gold_bar/gold_bar.vmdl",
         "RenderType": "On",
-        "Tint": "1,1,1,1"
+        "Tint": "1,1,1,1",
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
       },
       {
-        "__type": "BoxCollider",
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "59ca1631-6b2a-47ae-a591-f6e41c682881",
+        "__enabled": true,
+        "Flags": 0,
         "Center": "0,0,1.5",
         "IsTrigger": true,
         "Scale": "2,5,2",
-        "Static": false
+        "Static": false,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
       },
       {
-        "__type": "PickupController"
+        "__type": "PickupController",
+        "__guid": "85051fb1-0c3c-407a-915a-616d32b57c49",
+        "__enabled": true,
+        "Flags": 0,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
       }
     ],
-    "Children": []
+    "Children": [],
+    "__variables": [],
+    "__properties": {
+      "NetworkInterpolation": true,
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
   "__references": [
     "snakecoil.gold_bar"
-  ]
+  ],
+  "ResourceVersion": 2,
+  "DontBreakAsTemplate": false,
+  "__version": 2
 }

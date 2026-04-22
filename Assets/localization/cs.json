@@ -1,0 +1,48 @@
+{
+	"menu.paused": "Pozastaveno",
+	"menu.resume": "Pokračovat",
+	"menu.settings": "Nastavení",
+	"menu.controls": "Ovládání",
+	"menu.credits": "Poděkování",
+	"menu.quit": "Ukončit",
+	"menu.back": "Zpět",
+
+	"settings.mouse_sensitivity": "citlivost myši",
+	"settings.keyboard_sensitivity": "citlivost klávesnice",
+	"settings.music_volume": "hlasitost hudby",
+	"settings.language": "jazyk",
+
+	"controls.tilt_forward": "Naklonit vpřed",
+	"controls.tilt_backward": "Naklonit vzad",
+	"controls.tilt_left": "Naklonit vlevo",
+	"controls.tilt_right": "Naklonit vpravo",
+	"controls.spin_button": "Otáčet (držet)",
+	"controls.spin_left": "Otočit vlevo",
+	"controls.spin_right": "Otočit vpravo",
+	"controls.rotation_reset": "Resetovat rotaci",
+	"controls.leaderboard": "Žebříček",
+	"controls.press_key": "…",
+	"controls.reset_defaults": "Obnovit výchozí",
+	"controls.defaults_reset": "obnoveno",
+
+	"credits.intro": "díky členům komunity s&box",
+	"credits.conclusion": "bez nich by tato hra neexistovala",
+
+	"debug.title": "Debug",
+	"debug.delete_tutorial": "Smazat tutorial.txt",
+	"debug.delete_settings": "Smazat settings.txt",
+	"debug.tutorial_deleted": "smazáno",
+	"debug.settings_deleted": "smazáno",
+
+	"leaderboard.title": "Žebříček",
+	"leaderboard.hide_hint": "stiskni {Leaderboard} pro skrytí",
+
+	"tutorial.move_mouse": "pohybuj myší",
+	"tutorial.wsad": "můžeš také použít {TiltForward}{TiltLeft}{TiltBackward}{TiltRight}",
+	"tutorial.drag_lmb": "táhni pomocí {SpinButton}",
+	"tutorial.eq": "můžeš také použít {SpinLeft} a {SpinRight}",
+	"tutorial.reset": "stiskni {RotationReset} pro resetování rotace",
+	"tutorial.collect_gold": "sesbírej 4 zlaté cihly",
+	"tutorial.reach_goal": "dosáhni cílové plošiny dvakrát",
+	"tutorial.max_points": "získej co nejvíce bodů"
+}

@@ -1,0 +1,48 @@
+{
+	"menu.paused": "Пауза",
+	"menu.resume": "Продовжити",
+	"menu.settings": "Налаштування",
+	"menu.controls": "Керування",
+	"menu.credits": "Подяки",
+	"menu.quit": "Вийти",
+	"menu.back": "Назад",
+
+	"settings.mouse_sensitivity": "чутливість миші",
+	"settings.keyboard_sensitivity": "чутливість клавіатури",
+	"settings.music_volume": "гучність музики",
+	"settings.language": "мова",
+
+	"controls.tilt_forward": "Нахил уперед",
+	"controls.tilt_backward": "Нахил назад",
+	"controls.tilt_left": "Нахил ліворуч",
+	"controls.tilt_right": "Нахил праворуч",
+	"controls.spin_button": "Обертання (утримуй)",
+	"controls.spin_left": "Обертати ліворуч",
+	"controls.spin_right": "Обертати праворуч",
+	"controls.rotation_reset": "Скинути обертання",
+	"controls.leaderboard": "Таблиця лідерів",
+	"controls.press_key": "…",
+	"controls.reset_defaults": "За замовчуванням",
+	"controls.defaults_reset": "скинуто",
+
+	"credits.intro": "дякую учасникам спільноти s&box",
+	"credits.conclusion": "без них цієї гри б не було",
+
+	"debug.title": "Debug",
+	"debug.delete_tutorial": "Видалити tutorial.txt",
+	"debug.delete_settings": "Видалити settings.txt",
+	"debug.tutorial_deleted": "видалено",
+	"debug.settings_deleted": "видалено",
+
+	"leaderboard.title": "Таблиця лідерів",
+	"leaderboard.hide_hint": "натисни {Leaderboard} щоб сховати",
+
+	"tutorial.move_mouse": "Гей, хлопці, не вспію — на ґанку ваша файна їжа знищується бурундучком",
+	"tutorial.wsad": "також можна {TiltForward}{TiltLeft}{TiltBackward}{TiltRight}",
+	"tutorial.drag_lmb": "тягни {SpinButton}",
+	"tutorial.eq": "також {SpinLeft} і {SpinRight}",
+	"tutorial.reset": "{RotationReset} щоб скинути",
+	"tutorial.collect_gold": "збери 4 золоті зливки",
+	"tutorial.reach_goal": "досягни мети двічі",
+	"tutorial.max_points": "набери якомога більше балів"
+}

@@ -1,0 +1,51 @@
+PlayerHud {
+	font-family: Hamster-9fc7a5;
+
+	> .vitals {
+		position: absolute;
+		top: 3vh;
+		left: 2.5vw;
+		font-size: 6vh;
+		font-weight: bold;
+		letter-spacing: 8px;
+		color: white;
+		flex-direction: column;
+
+		> p {
+			flex-direction: row;
+			align-items: center;
+		}
+
+		> p span {
+			text-stroke: 9px black;
+
+			&.animate {
+				animation: tilt 0.3s;
+			}
+		}
+
+		> p IconPanel {
+			width: 8vh;
+			font-size: 6vh;
+			color: white;
+			text-stroke: 9px black;
+		}
+	}
+}
+
+@keyframes tilt {
+	0% {
+		transform: rotate(0deg) scale(1);
+		transform-origin: center;
+	}
+
+	50% {
+		transform: rotate(10deg) scale(1.2);
+		transform-origin: center;
+	}
+
+	100% {
+		transform: rotate(0deg) scale(1);
+		transform-origin: center;
+	}
+}

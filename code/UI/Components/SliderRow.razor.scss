@@ -1,0 +1,58 @@
+SliderRow {
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	width: 60vw;
+	height: 6vh;
+	margin-bottom: 1vh;
+
+	> label {
+		font-size: 4vh;
+		width: 26vw;
+		text-align: right;
+		padding-right: 1vw;
+		border-right: 2px solid rgba(white, 0.3);
+		color: white;
+	}
+
+	> .control {
+		margin-left: 1vw;
+		width: 32vw;
+		align-items: center;
+
+		SliderControl {
+			width: 100%;
+			box-shadow: 0 0 100px rgba(black, 0.2);
+
+			.inner .track .thumb .value-tooltip {
+				position: static;
+			}
+
+			.inner .track .thumb .value-tooltip .label {
+				position: absolute;
+				left: 50%;
+				bottom: 175%;
+				transform: translateX(-50%);
+				width: 100px;
+				height: 100px;
+				padding: 0;
+				border-radius: 100%;
+				background-color: rgba(black, 0.5);
+				backdrop-filter: blur(4px);
+				text-align: center;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.inner .track .thumb .value-tooltip .tail {
+				position: absolute;
+				left: 50%;
+				bottom: 150%;
+				width: 10px;
+				height: 10px;
+				transform: translateX(-50%) rotateZ(45deg);
+				background-color: white;
+			}
+		}
+	}
+}

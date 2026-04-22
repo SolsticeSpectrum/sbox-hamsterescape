@@ -1,0 +1,48 @@
+{
+	"menu.paused": "Pause",
+	"menu.resume": "Reprendre",
+	"menu.settings": "Paramètres",
+	"menu.controls": "Contrôles",
+	"menu.credits": "Crédits",
+	"menu.quit": "Quitter",
+	"menu.back": "Retour",
+
+	"settings.mouse_sensitivity": "sensibilité de la souris",
+	"settings.keyboard_sensitivity": "sensibilité du clavier",
+	"settings.music_volume": "volume de la musique",
+	"settings.language": "langue",
+
+	"controls.tilt_forward": "Incliner vers l'avant",
+	"controls.tilt_backward": "Incliner vers l'arrière",
+	"controls.tilt_left": "Incliner à gauche",
+	"controls.tilt_right": "Incliner à droite",
+	"controls.spin_button": "Tourner (maintenir)",
+	"controls.spin_left": "Tourner à gauche",
+	"controls.spin_right": "Tourner à droite",
+	"controls.rotation_reset": "Réinitialiser la rotation",
+	"controls.leaderboard": "Classement",
+	"controls.press_key": "…",
+	"controls.reset_defaults": "Par défaut",
+	"controls.defaults_reset": "réinitialisé",
+
+	"credits.intro": "merci aux membres de la communauté s&box",
+	"credits.conclusion": "ce jeu n'existerait pas sans eux",
+
+	"debug.title": "Debug",
+	"debug.delete_tutorial": "Supprimer tutorial.txt",
+	"debug.delete_settings": "Supprimer settings.txt",
+	"debug.tutorial_deleted": "supprimé",
+	"debug.settings_deleted": "supprimé",
+
+	"leaderboard.title": "Classement",
+	"leaderboard.hide_hint": "appuie sur {Leaderboard} pour masquer",
+
+	"tutorial.move_mouse": "bouge la souris",
+	"tutorial.wsad": "tu peux aussi utiliser {TiltForward}{TiltLeft}{TiltBackward}{TiltRight}",
+	"tutorial.drag_lmb": "glisse avec {SpinButton}",
+	"tutorial.eq": "tu peux aussi utiliser {SpinLeft} et {SpinRight}",
+	"tutorial.reset": "appuie sur {RotationReset} pour réinitialiser",
+	"tutorial.collect_gold": "récolte 4 lingots d'or",
+	"tutorial.reach_goal": "atteins la plateforme cible deux fois",
+	"tutorial.max_points": "obtiens le plus de points possible"
+}

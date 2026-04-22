@@ -3,10 +3,10 @@ using System;
 
 public sealed class RotationController : Component
 {
-	[Property, Range( 0, 90, 0 )] public float RotationClamp { get; set; } = 20;
-	[Property, Range( 0, 50, 0 )] public float ResetSpeed { get; set; } = 10;
-	[Property, Range( 0, 20, 0 )] public int M_Sensitivity { get; set; } = 10;
-	[Property, Range( 0, 20, 0 )] public int KB_Sensitivity { get; set; } = 10;
+	[Property, Range( 0, 90 )] public float RotationClamp { get; set; } = 20;
+	[Property, Range( 0, 50 )] public float ResetSpeed { get; set; } = 10;
+	[Property, Range( 0, 20 )] public int MouseSensitivity { get; set; } = 10;
+	[Property, Range( 0, 20 )] public int KeyboardSensitivity { get; set; } = 10;
 	[Property] public bool IsResetting { get; set; } = false;
 
 	private Angles Angle;
@@ -16,27 +16,27 @@ public sealed class RotationController : Component
 
 	private void Controls()
 	{
-		var DeltaX = Input.MouseDelta.x * M_Sensitivity / 100;
-		var DeltaY = Input.MouseDelta.y * M_Sensitivity / 100;
-		var kbSensitivity = KB_Sensitivity / 8;
+		var deltaX = Input.MouseDelta.x * MouseSensitivity / 100;
+		var deltaY = Input.MouseDelta.y * MouseSensitivity / 100;
+		var step = KeyboardSensitivity / 8;
 
-		if ( Input.Down( "Tilt Forward" ) ) DeltaY -= kbSensitivity;
-		if ( Input.Down( "Tilt Backward" ) ) DeltaY += kbSensitivity;
-		if ( Input.Down( "Tilt Left" ) ) DeltaX -= kbSensitivity;
-		if ( Input.Down( "Tilt Right" ) ) DeltaX += kbSensitivity;
+		if ( Input.Down( "Tilt Forward" ) ) deltaY -= step;
+		if ( Input.Down( "Tilt Backward" ) ) deltaY += step;
+		if ( Input.Down( "Tilt Left" ) ) deltaX -= step;
+		if ( Input.Down( "Tilt Right" ) ) deltaX += step;
 
-		if ( Input.Down( "Spin Button" ) ) Angle.yaw += DeltaX;
-		if ( Input.Down( "Spin Left" ) ) Angle.yaw -= kbSensitivity;
-		if ( Input.Down( "Spin Right" ) ) Angle.yaw += kbSensitivity;
+		if ( Input.Down( "Spin Button" ) ) Angle.yaw += deltaX;
+		if ( Input.Down( "Spin Left" ) ) Angle.yaw -= step;
+		if ( Input.Down( "Spin Right" ) ) Angle.yaw += step;
 
 		if ( !( Input.Down( "Spin Button" )
 			|| Input.Down( "Spin Left" )
 			|| Input.Down( "Spin Right" ) ) )
 		{
-			if ( Yaw > 135 || Yaw < -135 ) { Pitch += DeltaY; Roll -= DeltaX; } // north
-			if ( Yaw < 45 && Yaw > -45 ) { Pitch -= DeltaY; Roll += DeltaX; } // south
-			if ( Yaw < -45 && Yaw > -135 ) { Pitch += DeltaX; Roll += DeltaY; } // east
-			if ( Yaw > 45 && Yaw < 135 ) { Pitch -= DeltaX; Roll -= DeltaY; } // west
+			if ( Yaw > 135 || Yaw < -135 ) { Pitch += deltaY; Roll -= deltaX; } // north
+			if ( Yaw < 45 && Yaw > -45 ) { Pitch -= deltaY; Roll += deltaX; } // south
+			if ( Yaw < -45 && Yaw > -135 ) { Pitch += deltaX; Roll += deltaY; } // east
+			if ( Yaw > 45 && Yaw < 135 ) { Pitch -= deltaX; Roll -= deltaY; } // west
 		}
 
 		Angle.roll = Roll.Clamp( -RotationClamp, RotationClamp );
@@ -73,16 +73,30 @@ public sealed class RotationController : Component
 
 	protected override void OnFixedUpdate()
 	{
-		Angle = Transform.Rotation.Angles();
+		if ( Input.Pressed( "Rotation Reset" ) )
+		{
+			SnapToIdentity();
+			return;
+		}
+
+		Angle = WorldRotation.Angles();
 		Roll = Angle.roll;
 		Pitch = Angle.pitch;
 		Yaw = Angle.yaw;
 
-		if ( Input.Down( "Rotation Reset" ) ) IsResetting = true; 
-
 		if ( !IsResetting ) Controls();
 		else RotationReset();
 
-		Transform.Rotation = Angle.ToRotation();
+		WorldRotation = Angle.ToRotation();
+	}
+
+	public void SnapToIdentity()
+	{
+		IsResetting = false;
+		Angle = Angles.Zero;
+		Roll = 0;
+		Pitch = 0;
+		Yaw = 0;
+		WorldRotation = Rotation.Identity;
 	}
 }

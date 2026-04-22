@@ -1,0 +1,25 @@
+ControlsPage {
+	flex-direction: column;
+	align-items: center;
+	gap: 2vh;
+}
+
+ControlsPage > .columns {
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 4vw;
+}
+
+ControlsPage > .columns > .column {
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.5vh;
+}
+
+ControlsPage > .footer {
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5vh;
+	margin-top: 2vh;
+}

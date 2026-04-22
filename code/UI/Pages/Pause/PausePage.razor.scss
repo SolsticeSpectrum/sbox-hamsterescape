@@ -1,0 +1,11 @@
+PausePage {
+	flex-direction: column;
+	align-items: center;
+	gap: 2vh;
+
+	> .options {
+		flex-direction: column;
+		align-items: center;
+		gap: 1vh;
+	}
+}

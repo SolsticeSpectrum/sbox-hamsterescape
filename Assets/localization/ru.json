@@ -1,0 +1,48 @@
+{
+	"menu.paused": "Пауза",
+	"menu.resume": "Продолжить",
+	"menu.settings": "Настройки",
+	"menu.controls": "Управление",
+	"menu.credits": "Титры",
+	"menu.quit": "Выход",
+	"menu.back": "Назад",
+
+	"settings.mouse_sensitivity": "чувствительность мыши",
+	"settings.keyboard_sensitivity": "чувствительность клавиатуры",
+	"settings.music_volume": "громкость музыки",
+	"settings.language": "язык",
+
+	"controls.tilt_forward": "Наклон вперёд",
+	"controls.tilt_backward": "Наклон назад",
+	"controls.tilt_left": "Наклон влево",
+	"controls.tilt_right": "Наклон вправо",
+	"controls.spin_button": "Вращение (удерживать)",
+	"controls.spin_left": "Вращать влево",
+	"controls.spin_right": "Вращать вправо",
+	"controls.rotation_reset": "Сбросить вращение",
+	"controls.leaderboard": "Таблица лидеров",
+	"controls.press_key": "…",
+	"controls.reset_defaults": "По умолчанию",
+	"controls.defaults_reset": "сброшено",
+
+	"credits.intro": "спасибо участникам сообщества s&box",
+	"credits.conclusion": "без них этой игры бы не было",
+
+	"debug.title": "Debug",
+	"debug.delete_tutorial": "Удалить tutorial.txt",
+	"debug.delete_settings": "Удалить settings.txt",
+	"debug.tutorial_deleted": "удалено",
+	"debug.settings_deleted": "удалено",
+
+	"leaderboard.title": "Таблица лидеров",
+	"leaderboard.hide_hint": "нажми {Leaderboard} чтобы скрыть",
+
+	"tutorial.move_mouse": "Съешь ещё этих мягких французских булок, да выпей же чаю",
+	"tutorial.wsad": "также можешь использовать {TiltForward}{TiltLeft}{TiltBackward}{TiltRight}",
+	"tutorial.drag_lmb": "тяни с {SpinButton}",
+	"tutorial.eq": "также можешь {SpinLeft} и {SpinRight}",
+	"tutorial.reset": "нажми {RotationReset} чтобы сбросить",
+	"tutorial.collect_gold": "собери 4 золотых слитка",
+	"tutorial.reach_goal": "достигни финиша дважды",
+	"tutorial.max_points": "набери как можно больше очков"
+}

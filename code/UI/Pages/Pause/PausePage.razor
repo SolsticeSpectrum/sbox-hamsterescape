@@ -1,0 +1,23 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@namespace Sandbox
+@inherits Panel
+
+<root>
+	<PageTitle Text=@L.T("menu.paused") />
+	<div class="options">
+		<MenuButton Text=@L.T("menu.resume") Clicked=@Resume />
+		<MenuButton Text=@L.T("menu.settings") Clicked=@Nav.To(Layout.Page.Settings) />
+		<MenuButton Text=@L.T("menu.controls") Clicked=@Nav.To(Layout.Page.Controls) />
+		<MenuButton Text=@L.T("menu.credits") Clicked=@Nav.To(Layout.Page.Credits) />
+		<MenuButton Text=@L.T("menu.quit") Clicked=@Quit />
+	</div>
+</root>
+
+@code
+{
+	[Parameter] public Action Resume { get; set; }
+	[Parameter] public Action Quit { get; set; }
+	[Parameter] public Navigator<Layout.Page> Nav { get; set; }
+}

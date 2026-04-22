@@ -1,0 +1,40 @@
+@using Sandbox;
+@using Sandbox.UI;
+@namespace Sandbox
+@inherits Panel
+
+<root>
+	<span>@Text</span>
+</root>
+
+@code
+{
+	public string Text { get; private set; }
+	public TimeUntil TimeUntil { get; set; } = 0;
+	public bool Animate { get; set; } = false;
+
+	private bool pending;
+
+	public void Show( string text )
+	{
+		Text = text;
+		TimeUntil = 1.5f;
+		Animate = false;
+		pending = true;
+	}
+
+	public override void Tick()
+	{
+		base.Tick();
+		if ( pending ) { pending = false; return; }
+		if ( !Animate && TimeUntil > 0 ) Animate = true;
+		else if ( Animate && TimeUntil <= 0 ) Animate = false;
+	}
+
+	protected override void OnAfterTreeRender( bool firstTime )
+	{
+		if ( firstTime ) BindClass( "animate", () => Animate );
+	}
+
+	protected override int BuildHash() => System.HashCode.Combine( Text );
+}

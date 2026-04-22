@@ -1,0 +1,48 @@
+{
+	"menu.paused": "En pausa",
+	"menu.resume": "Reanudar",
+	"menu.settings": "Ajustes",
+	"menu.controls": "Controles",
+	"menu.credits": "Créditos",
+	"menu.quit": "Salir",
+	"menu.back": "Atrás",
+
+	"settings.mouse_sensitivity": "sensibilidad del ratón",
+	"settings.keyboard_sensitivity": "sensibilidad del teclado",
+	"settings.music_volume": "volumen de la música",
+	"settings.language": "idioma",
+
+	"controls.tilt_forward": "Inclinar adelante",
+	"controls.tilt_backward": "Inclinar atrás",
+	"controls.tilt_left": "Inclinar izquierda",
+	"controls.tilt_right": "Inclinar derecha",
+	"controls.spin_button": "Girar (mantener)",
+	"controls.spin_left": "Girar izquierda",
+	"controls.spin_right": "Girar derecha",
+	"controls.rotation_reset": "Restablecer rotación",
+	"controls.leaderboard": "Clasificación",
+	"controls.press_key": "…",
+	"controls.reset_defaults": "Valores por defecto",
+	"controls.defaults_reset": "restablecido",
+
+	"credits.intro": "gracias a los miembros de la comunidad s&box",
+	"credits.conclusion": "este juego no existiría sin ellos",
+
+	"debug.title": "Debug",
+	"debug.delete_tutorial": "Borrar tutorial.txt",
+	"debug.delete_settings": "Borrar settings.txt",
+	"debug.tutorial_deleted": "borrado",
+	"debug.settings_deleted": "borrado",
+
+	"leaderboard.title": "Clasificación",
+	"leaderboard.hide_hint": "pulsa {Leaderboard} para ocultar",
+
+	"tutorial.move_mouse": "mueve el ratón",
+	"tutorial.wsad": "también puedes usar {TiltForward}{TiltLeft}{TiltBackward}{TiltRight}",
+	"tutorial.drag_lmb": "arrastra con {SpinButton}",
+	"tutorial.eq": "también puedes usar {SpinLeft} y {SpinRight}",
+	"tutorial.reset": "pulsa {RotationReset} para restablecer la rotación",
+	"tutorial.collect_gold": "recoge 4 barras de oro",
+	"tutorial.reach_goal": "alcanza la plataforma meta dos veces",
+	"tutorial.max_points": "consigue la mayor cantidad de puntos"
+}

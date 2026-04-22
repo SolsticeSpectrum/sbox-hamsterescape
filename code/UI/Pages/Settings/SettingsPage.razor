@@ -1,0 +1,54 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@namespace Sandbox
+@inherits Panel
+
+<root>
+	<PageTitle Text=@L.T("menu.settings") />
+
+	<div class="rows">
+		<SliderRow Label="@L.T("settings.mouse_sensitivity")">
+			<Slider>
+				<SliderControl Value:bind="@Layout.SceneManager.RotationController.MouseSensitivity" Min=@(1) Max=@(20) Step=@(1) />
+			</Slider>
+		</SliderRow>
+		<SliderRow Label="@L.T("settings.keyboard_sensitivity")">
+			<Slider>
+				<SliderControl Value:bind="@Layout.SceneManager.RotationController.KeyboardSensitivity" Min=@(1) Max=@(20) Step=@(1) />
+			</Slider>
+		</SliderRow>
+		<SliderRow Label="@L.T("settings.music_volume")">
+			<Slider>
+				<SliderControl Value:bind="@Layout.Volume" Min=@(0) Max=@(10) Step=@(1) />
+			</Slider>
+		</SliderRow>
+		<DropdownRow Label="@L.T("settings.language")"
+					 Options=@options
+					 Selected=@L.CurrentCode
+					 OnSelect=@select />
+	</div>
+
+	<div class="footer">
+		@if ( Game.IsEditor )
+		{
+			<MenuButton Text=@L.T("debug.title") Clicked=@Nav.To(Layout.Page.Debug) />
+		}
+		<MenuButton Text=@L.T("menu.back") Clicked=@Nav.To(Layout.Page.Main) />
+	</div>
+</root>
+
+@code
+{
+	[Parameter] public Layout Layout { get; set; }
+	[Parameter] public Navigator<Layout.Page> Nav { get; set; }
+
+	private static readonly IReadOnlyList<DropdownOption> options =
+		L.Available.Select( e => new DropdownOption( e.Code, e.Title ) ).ToList();
+
+	private Action<string> select = c => L.SetLanguage( c );
+
+	protected override int BuildHash() => System.HashCode.Combine( L.CurrentCode );
+}

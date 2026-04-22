@@ -1,0 +1,54 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@namespace Sandbox
+@inherits Panel
+
+<root>
+	<label>@Label</label>
+	<div class="slot">
+		<div class="dropdown @(open ? "open" : "")">
+			<div class="current" onclick=@Toggle>
+				<span class="text">@(SelectedOption()?.Title ?? Selected)</span>
+			</div>
+			@if ( open )
+			{
+				<div class="list" style="max-height: @MaxVisibleHeight;">
+					@foreach ( var opt in Options )
+					{
+						<div class="item @(opt.Value == Selected ? "active" : "")" onclick=@(() => Pick(opt.Value))>
+							@opt.Title
+						</div>
+					}
+				</div>
+			}
+		</div>
+	</div>
+</root>
+
+@code
+{
+	[Parameter] public string Label { get; set; }
+	[Parameter] public IReadOnlyList<DropdownOption> Options { get; set; } = Array.Empty<DropdownOption>();
+	[Parameter] public string Selected { get; set; }
+	[Parameter] public Action<string> OnSelect { get; set; }
+	[Parameter] public int MaxVisible { get; set; } = 5;
+
+	private bool open;
+
+	private string MaxVisibleHeight => $"{MaxVisible * 5.5f}vh";
+
+	private DropdownOption SelectedOption() => Options.FirstOrDefault( o => o.Value == Selected );
+
+	private void Toggle() => open = !open;
+
+	private void Pick( string value )
+	{
+		open = false;
+		OnSelect?.Invoke( value );
+	}
+
+	protected override int BuildHash() => System.HashCode.Combine( Label, Selected, Options?.Count ?? 0, open );
+}

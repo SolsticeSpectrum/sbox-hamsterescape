@@ -1,0 +1,48 @@
+{
+	"menu.paused": "Paused",
+	"menu.resume": "Resume",
+	"menu.settings": "Settings",
+	"menu.controls": "Controls",
+	"menu.credits": "Credits",
+	"menu.quit": "Quit",
+	"menu.back": "Back",
+
+	"settings.mouse_sensitivity": "mouse sensitivity",
+	"settings.keyboard_sensitivity": "keyboard sensitivity",
+	"settings.music_volume": "music volume",
+	"settings.language": "language",
+
+	"controls.tilt_forward": "Tilt Forward",
+	"controls.tilt_backward": "Tilt Backward",
+	"controls.tilt_left": "Tilt Left",
+	"controls.tilt_right": "Tilt Right",
+	"controls.spin_button": "Spin (hold)",
+	"controls.spin_left": "Spin Left",
+	"controls.spin_right": "Spin Right",
+	"controls.rotation_reset": "Reset Rotation",
+	"controls.leaderboard": "Leaderboard",
+	"controls.press_key": "…",
+	"controls.reset_defaults": "Reset to Defaults",
+	"controls.defaults_reset": "reset",
+
+	"credits.intro": "thanks to members of s&box community",
+	"credits.conclusion": "this game wouldn't exist without them",
+
+	"debug.title": "Debug",
+	"debug.delete_tutorial": "Delete tutorial.txt",
+	"debug.delete_settings": "Delete settings.txt",
+	"debug.tutorial_deleted": "deleted",
+	"debug.settings_deleted": "deleted",
+
+	"leaderboard.title": "Leaderboard",
+	"leaderboard.hide_hint": "press {Leaderboard} to hide",
+
+	"tutorial.move_mouse": "move your mouse around",
+	"tutorial.wsad": "you can also use {TiltForward}{TiltLeft}{TiltBackward}{TiltRight}",
+	"tutorial.drag_lmb": "drag using {SpinButton}",
+	"tutorial.eq": "you can also use {SpinLeft} and {SpinRight}",
+	"tutorial.reset": "press {RotationReset} to reset rotation",
+	"tutorial.collect_gold": "collect 4 gold bars",
+	"tutorial.reach_goal": "reach the goal platform twice",
+	"tutorial.max_points": "get as many points as possible"
+}

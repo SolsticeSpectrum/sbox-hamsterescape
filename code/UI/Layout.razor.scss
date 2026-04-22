@@ -1,0 +1,24 @@
+Layout {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: transparent;
+	pointer-events: all;
+	backdrop-filter: blur(10px);
+	color: white;
+	font-family: Hamster-9fc7a5;
+	font-size: 6vh;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	letter-spacing: 2px;
+	transition: opacity 0.1s ease;
+
+	&.hide {
+		opacity: 0;
+		pointer-events: none;
+		backdrop-filter: blur(0);
+	}
+}
