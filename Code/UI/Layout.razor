@@ -1,0 +1,112 @@
+@using Sandbox.UI
+@using System
+@namespace Sandbox
+@inherits PanelComponent
+
+
+<root @ref="Root">
+	@switch ( CurrentPage )
+	{
+		case Page.Settings:
+			<SettingsPage Layout=@this Nav=@nav />
+			break;
+		case Page.Controls:
+			<ControlsPage Layout=@this Nav=@nav />
+			break;
+		case Page.Credits:
+			<CreditsPage Nav=@nav />
+			break;
+		case Page.Debug:
+			<DebugPage Layout=@this Nav=@nav />
+			break;
+		default:
+			<PausePage Resume=@resume Quit=@quit Nav=@nav />
+			break;
+	}
+	<ToastComponent @ref="Toast" />
+</root>
+
+@code
+{
+	public enum Page
+	{
+		Main,
+		Settings,
+		Controls,
+		Credits,
+		Debug,
+	}
+
+	[Property] public SceneManager SceneManager { get; set; }
+	[Property] public GameObject PlayerHud { get; set; }
+
+	public Panel Root { get; set; }
+	public ToastComponent Toast { get; set; }
+	public bool IsPaused { get; set; } = false;
+	public Page CurrentPage { get; set; } = Page.Main;
+	public float Volume { get; set; } = 3;
+
+	private Action resume;
+	private Action quit;
+	private Navigator<Page> nav;
+
+	private void Resume() => IsPaused = false;
+	private void Quit() => Game.Close();
+
+	public void Goto( Page page ) => CurrentPage = page;
+
+	private Page? ParentOf( Page page ) => page switch
+	{
+		Page.Settings => Page.Main,
+		Page.Controls => Page.Main,
+		Page.Credits => Page.Main,
+		Page.Debug => Page.Settings,
+		_ => null,
+	};
+
+	protected override void OnAwake()
+	{
+		resume = Resume;
+		quit = Quit;
+		nav = new Navigator<Page>( Goto );
+		Settings.Load( this );
+	}
+
+	protected override void OnUpdate()
+	{
+		if ( Input.EscapePressed )
+		{
+			Input.EscapePressed = false;
+
+			if ( InputBindings.IsTrapping )
+			{
+				InputBindings.CancelRebind();
+			}
+			else if ( IsPaused && ParentOf( CurrentPage ) is Page parent )
+			{
+				Goto( parent );
+			}
+			else
+			{
+				IsPaused = !IsPaused;
+				if ( !IsPaused ) Goto( Page.Main );
+			}
+		}
+
+		Scene.TimeScale = IsPaused ? 0 : 1;
+
+		PlayerHud.Components.Get<SoundPointComponent>().Volume = Volume / 10;
+	}
+
+	protected override void OnTreeFirstBuilt()
+	{
+		Root.BindClass( "hide", () => !IsPaused );
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine( IsPaused, CurrentPage );
+	}
+
+	protected override void OnDisabled() => Settings.Save( this );
+}

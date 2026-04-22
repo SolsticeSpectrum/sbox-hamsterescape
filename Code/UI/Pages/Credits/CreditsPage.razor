@@ -1,0 +1,38 @@
+@using Sandbox.UI
+@namespace Sandbox
+@inherits Panel
+
+<root>
+	<div class="credits">
+		<p class="intro">@L.T("credits.intro")</p>
+		<div class="list">
+			<ul class="column">
+				<li>1. Arargd</li>
+				<li>2. Brassx</li>
+				<li>3. Carson</li>
+				<li>4. devultj</li>
+				<li>5. DrakeFruit</li>
+				<li>6. funyOn</li>
+				<li>7. garry</li>
+			</ul>
+			<ul class="column">
+				<li>8. Kidd</li>
+				<li>9. kicks</li>
+				<li>10. Matt944</li>
+				<li>11. R3N10</li>
+				<li>12. Toby</li>
+				<li>13. ubre</li>
+				<li>14. Xenthio</li>
+			</ul>
+		</div>
+		<p class="conclusion">@L.T("credits.conclusion")</p>
+	</div>
+	<ButtonComponent Text=@L.T("menu.back") Clicked=@Nav.To(Layout.Page.Main) />
+</root>
+
+@code
+{
+	[Parameter] public Navigator<Layout.Page> Nav { get; set; }
+
+	protected override int BuildHash() => System.HashCode.Combine( L.CurrentCode );
+}

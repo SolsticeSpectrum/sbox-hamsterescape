@@ -1,0 +1,34 @@
+@using Sandbox.UI
+@namespace Sandbox
+@inherits Panel
+
+<root>
+	<TitleComponent Text=@L.T("debug.title") />
+	<div class="rows">
+		<ButtonComponent Text=@L.T("debug.delete_tutorial") Clicked=@DeleteTutorial />
+		<ButtonComponent Text=@L.T("debug.delete_settings") Clicked=@DeleteSettings />
+	</div>
+	<ButtonComponent Text=@L.T("menu.back") Clicked=@Nav.To(Layout.Page.Settings) />
+</root>
+
+@code
+{
+	[Parameter] public Layout Layout { get; set; }
+	[Parameter] public Navigator<Layout.Page> Nav { get; set; }
+
+	private void DeleteTutorial()
+	{
+		Tutorial.Reset();
+		TutorialHud.Instance?.Restart();
+		Layout.Toast.Show( L.T( "debug.tutorial_deleted" ) );
+	}
+
+	private void DeleteSettings()
+	{
+		Settings.Delete();
+		Settings.Reset( Layout );
+		Layout.Toast.Show( L.T( "debug.settings_deleted" ) );
+	}
+
+	protected override int BuildHash() => System.HashCode.Combine( L.CurrentCode );
+}

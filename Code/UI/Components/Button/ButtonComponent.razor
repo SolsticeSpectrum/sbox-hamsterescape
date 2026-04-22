@@ -1,0 +1,17 @@
+@using Sandbox.UI
+@using System
+@namespace Sandbox
+@inherits Panel
+
+<root onclick=@OnClicked>
+	@Text
+</root>
+
+@code
+{
+	// string, not RenderFragment, named slots allocate fresh lambda every render
+	[Parameter] public string Text { get; set; }
+	[Parameter] public Action Clicked { get; set; }
+
+	private void OnClicked() => Clicked?.Invoke();
+}

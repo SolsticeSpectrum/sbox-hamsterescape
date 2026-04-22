@@ -9,8 +9,8 @@
 obj
 bin
 Properties/*
-code/obj/*
-code/Properties/*
+Code/obj/*
+Code/Properties/*
 
 # Auto-generated asset related files
 .sbox/*
