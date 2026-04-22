@@ -1,25 +1,45 @@
 using Sandbox;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 public static class L
 {
 	public const string DefaultCode = "en";
-
-	public static readonly IReadOnlyList<Entry> Available = new[]
-	{
-		new Entry( "en", "English" ),
-		new Entry( "cs", "Čeština" ),
-		new Entry( "de", "Deutsch" ),
-		new Entry( "es", "Español" ),
-		new Entry( "fr", "Français" ),
-		new Entry( "it", "Italiano" ),
-		new Entry( "ru", "Русский" ),
-		new Entry( "be", "Беларуская" ),
-		new Entry( "uk", "Українська" ),
-	};
+	public const string NameKey = "language.name";
 
 	public record Entry( string Code, string Title );
+
+	private static IReadOnlyList<Entry> available;
+
+	public static IReadOnlyList<Entry> Available => available ??= ScanAvailable();
+
+	private static IReadOnlyList<Entry> ScanAvailable()
+	{
+		var list = new List<Entry>();
+		foreach ( var file in FileSystem.Mounted.FindFile( "localization", "*.json" ) )
+		{
+			var code = System.IO.Path.GetFileNameWithoutExtension( file );
+			var entries = ReadFile( $"localization/{file}" );
+			var title = entries != null && entries.TryGetValue( NameKey, out var name ) ? name : code;
+			list.Add( new Entry( code, title ) );
+		}
+		return list.OrderBy( e => e.Code ).ToList();
+	}
+
+	private static Dictionary<string, string> ReadFile( string path )
+	{
+		if ( !FileSystem.Mounted.FileExists( path ) ) return null;
+		try
+		{
+			return FileSystem.Mounted.ReadJson<Dictionary<string, string>>( path );
+		}
+		catch ( System.Exception e )
+		{
+			Log.Warning( $"couldn't read localization file {path}: {e.Message}" );
+			return null;
+		}
+	}
 
 	private static readonly Dictionary<string, string> phrases = new( System.StringComparer.OrdinalIgnoreCase );
 	private static string current;
@@ -65,21 +85,10 @@ public static class L
 
 	private static void LoadInto( string code )
 	{
-		var path = $"localization/{code}.json";
-		if ( !FileSystem.Mounted.FileExists( path ) ) return;
-
-		try
-		{
-			var entries = FileSystem.Mounted.ReadJson<Dictionary<string, string>>( path );
-			if ( entries == null ) return;
-
-			foreach ( var kv in entries )
-				phrases[kv.Key] = kv.Value;
-		}
-		catch ( System.Exception e )
-		{
-			Log.Warning( $"couldn't read localization file {path}: {e.Message}" );
-		}
+		var entries = ReadFile( $"localization/{code}.json" );
+		if ( entries == null ) return;
+		foreach ( var kv in entries )
+			phrases[kv.Key] = kv.Value;
 	}
 
 	private static string Lookup( string key )

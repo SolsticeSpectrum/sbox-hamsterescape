@@ -1,15 +1,13 @@
 # Hamster Escape
 
-**Hamster Escape** is a game built on the experimental engine **s&box**, which is developed by Garry Newman and Facepunch Studios.
+Tilt-the-maze game for [s&box](https://sbox.game). You're a hamster in a ball, the whole maze rotates around you, and you need to collect gold and reach the goal platform without falling off.
 
-## Game Overview
+## How it plays
 
-In **Hamster Escape**, you control a hamster navigating through a randomly generated maze. Your goal is to collect as many gold bars as possible or aim to reach the 100-point goal.
+Mouse or WSAD tilts the maze. Drag with left mouse or E/Q to spin it. R snaps rotation back. Fall off, respawn, new maze. Score goes up, Steam leaderboard tracks it.
 
-## Gameplay
+Each run regenerates the maze via a Hilbert or Prim's generator so the layout is different every time.
 
-- **Randomly Generated Mazes**: Everytime you respawn, you'll be presented with newly generated maze.
-- **Gold Bars Collection**: Gather gold bars scattered throughout the maze to increase your score.
-- **100-Point Goal**: A high-value goal is placed further from the maze, providing a challenging objective for players.
-- **Global Leaderboard**: Compete with players worldwide to achieve the highest score and secure your place at the top of the leaderboard.
-- **Respawn Mechanic**: If you fall off the maze platform, your hamster will respawn, allowing you to continue your adventure.
+## Running it
+
+Clone, open in the s&box editor, hit play. No other setup.
