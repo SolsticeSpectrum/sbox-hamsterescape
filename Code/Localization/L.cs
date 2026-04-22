@@ -9,11 +9,7 @@ public static class L
 
 	private static IReadOnlyList<Entry> available;
 
-	public static IReadOnlyList<Entry> Available
-	{
-		// don't cache empty
-		get => available != null && available.Count > 0 ? available : available = ScanAvailable();
-	}
+	public static IReadOnlyList<Entry> Available => available ??= ScanAvailable();
 
 	private static IReadOnlyList<Entry> ScanAvailable()
 	{
