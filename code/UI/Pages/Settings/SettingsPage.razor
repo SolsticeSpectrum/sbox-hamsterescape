@@ -26,9 +26,13 @@
 			</Slider>
 		</SliderComponent>
 		<DropdownComponent Label="@L.T("settings.language")"
-					 Options=@options
+					 Options=@languageOptions
 					 Selected=@L.CurrentCode
-					 OnSelect=@select />
+					 OnSelect=@selectLanguage />
+		<DropdownComponent Label="@L.T("settings.algorithm")"
+					 Options=@algorithmOptions
+					 Selected=@Layout.SceneManager.Algorithm.Name
+					 OnSelect=@selectAlgorithm />
 	</div>
 
 	<div class="footer">
@@ -45,10 +49,20 @@
 	[Parameter] public Layout Layout { get; set; }
 	[Parameter] public Navigator<Layout.Page> Nav { get; set; }
 
-	private static readonly IReadOnlyList<DropdownOption> options =
+	private static readonly IReadOnlyList<DropdownOption> languageOptions =
 		L.Available.Select( e => new DropdownOption( e.Code, e.Title ) ).ToList();
 
-	private Action<string> select = c => L.SetLanguage( c );
+	private static readonly IReadOnlyList<DropdownOption> algorithmOptions =
+		MazeAlgorithms.Available.Select( e => new DropdownOption( e.Type.Name, e.Title ) ).ToList();
+
+	private Action<string> selectLanguage = c => L.SetLanguage( c );
+	private Action<string> selectAlgorithm;
+
+	protected override void OnParametersSet()
+	{
+		base.OnParametersSet();
+		selectAlgorithm ??= name => Layout.SceneManager.Algorithm = MazeAlgorithms.Resolve( name );
+	}
 
 	protected override int BuildHash() => System.HashCode.Combine( L.CurrentCode );
 }

@@ -1,5 +1,6 @@
 using Sandbox;
 using Sandbox.Services;
+using System;
 
 public sealed class SceneManager : Component
 {
@@ -16,6 +17,8 @@ public sealed class SceneManager : Component
 	[Property] public long Golds { get; set; } = 0;
 	[Property] public int Wins { get; set; } = 0;
 	[Property] public float KillHeight { get; set; } = 500;
+
+	public Type Algorithm { get; set; } = MazeAlgorithms.Default;
 
 	public TimeSince TimeAlive { get; set; } = 0;
 	public Leaderboards.Board Leaderboard;

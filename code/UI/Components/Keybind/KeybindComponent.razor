@@ -6,7 +6,7 @@
 
 <root>
 	<label>@Label</label>
-	<div class="bind @(IsRebinding ? "rebinding" : "")" onclick=@(() => Clicked?.Invoke())>
+	<div class="bind @(IsRebinding ? "rebinding" : "")" onclick=@OnClicked>
 		<span class="text">@(IsRebinding ? L.T("controls.press_key") : Key)</span>
 	</div>
 </root>
@@ -17,6 +17,8 @@
 	[Parameter] public string Key { get; set; }
 	[Parameter] public bool IsRebinding { get; set; }
 	[Parameter] public Action Clicked { get; set; }
+
+	private void OnClicked() => Clicked?.Invoke();
 
 	protected override int BuildHash() => System.HashCode.Combine( Label, Key, IsRebinding );
 }

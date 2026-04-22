@@ -12,6 +12,7 @@
 	"settings.keyboard_sensitivity": "Tastaturempfindlichkeit",
 	"settings.music_volume": "Musiklautstärke",
 	"settings.language": "Sprache",
+	"settings.algorithm": "Labyrinth-Algorithmus",
 
 	"controls.tilt_forward": "Nach vorne neigen",
 	"controls.tilt_backward": "Nach hinten neigen",

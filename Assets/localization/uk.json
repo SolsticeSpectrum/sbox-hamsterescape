@@ -12,6 +12,7 @@
 	"settings.keyboard_sensitivity": "чутливість клавіатури",
 	"settings.music_volume": "гучність музики",
 	"settings.language": "мова",
+	"settings.algorithm": "алгоритм лабіринту",
 
 	"controls.tilt_forward": "Нахил уперед",
 	"controls.tilt_backward": "Нахил назад",

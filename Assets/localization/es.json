@@ -12,6 +12,7 @@
 	"settings.keyboard_sensitivity": "sensibilidad del teclado",
 	"settings.music_volume": "volumen de la música",
 	"settings.language": "idioma",
+	"settings.algorithm": "algoritmo de laberinto",
 
 	"controls.tilt_forward": "Inclinar adelante",
 	"controls.tilt_backward": "Inclinar atrás",

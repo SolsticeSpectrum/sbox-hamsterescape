@@ -12,6 +12,7 @@
 	"settings.keyboard_sensitivity": "keyboard sensitivity",
 	"settings.music_volume": "music volume",
 	"settings.language": "language",
+	"settings.algorithm": "maze algorithm",
 
 	"controls.tilt_forward": "Tilt Forward",
 	"controls.tilt_backward": "Tilt Backward",

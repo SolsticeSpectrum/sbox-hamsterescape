@@ -1,6 +1,7 @@
 using Sandbox;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public sealed class MazeSpawner : Component
 {
@@ -15,11 +16,9 @@ public sealed class MazeSpawner : Component
 	[Property] public Vector2 MazeOffset { get; set; } = Vector2.Zero;
 	[Property] public bool AddGaps { get; set; } = true;
 	[Property, Range( 0, 5 )] public int Exits { get; set; } = 2;
-	[Property, TargetType( typeof( BasicMazeGenerator ) )]
-	
-	public Type Algorithm { get; set; } = typeof( HilbertLookaheadMazeAlgorithm );
 
 	private BasicMazeGenerator generator;
+	private SceneManager manager;
 	private float cellW;
 	private float cellH;
 	private float originX;
@@ -38,7 +37,9 @@ public sealed class MazeSpawner : Component
 
 		ClearChildren();
 
-		generator = Game.TypeLibrary.GetType( Algorithm )
+		manager ??= Scene.GetAllComponents<SceneManager>().FirstOrDefault();
+		var algorithm = manager?.Algorithm ?? MazeAlgorithms.Default;
+		generator = Game.TypeLibrary.GetType( algorithm )
 			?.Create<BasicMazeGenerator>( new object[] { Rows, Columns } );
 		generator?.GenerateMaze();
 		PickExits();

@@ -1,4 +1,5 @@
 using Sandbox;
+using System;
 using System.Collections.Generic;
 
 public static class Settings
@@ -9,16 +10,19 @@ public static class Settings
 	private static int defaultMouseSensitivity;
 	private static int defaultKeyboardSensitivity;
 	private static string defaultLanguage;
+	private static Type defaultAlgorithm;
 
 	public static void Load( Layout layout )
 	{
-		var rc = layout?.SceneManager?.RotationController;
-		if ( rc == null ) return;
+		var sm = layout?.SceneManager;
+		var rc = sm?.RotationController;
+		if ( sm == null || rc == null ) return;
 
 		defaultVolume = layout.Volume;
 		defaultMouseSensitivity = rc.MouseSensitivity;
 		defaultKeyboardSensitivity = rc.KeyboardSensitivity;
 		defaultLanguage = L.CurrentCode;
+		defaultAlgorithm = sm.Algorithm;
 
 		if ( !FileSystem.Data.FileExists( File ) ) return;
 
@@ -36,25 +40,29 @@ public static class Settings
 				case "keyboard_sensitivity": rc.KeyboardSensitivity = value.ToInt(); break;
 				case "music_volume": layout.Volume = value.ToFloat(); break;
 				case "language": L.SetLanguage( value ); break;
+				case "algorithm": sm.Algorithm = MazeAlgorithms.Resolve( value ); break;
 			}
 		}
 	}
 
 	public static void Reset( Layout layout )
 	{
-		var rc = layout?.SceneManager?.RotationController;
-		if ( rc == null ) return;
+		var sm = layout?.SceneManager;
+		var rc = sm?.RotationController;
+		if ( sm == null || rc == null ) return;
 
 		layout.Volume = defaultVolume;
 		rc.MouseSensitivity = defaultMouseSensitivity;
 		rc.KeyboardSensitivity = defaultKeyboardSensitivity;
 		L.SetLanguage( defaultLanguage );
+		sm.Algorithm = defaultAlgorithm;
 	}
 
 	public static void Save( Layout layout )
 	{
-		var rc = layout?.SceneManager?.RotationController;
-		if ( rc == null ) return;
+		var sm = layout?.SceneManager;
+		var rc = sm?.RotationController;
+		if ( sm == null || rc == null ) return;
 
 		var lines = new List<string>
 		{
@@ -62,6 +70,7 @@ public static class Settings
 			"keyboard_sensitivity:" + rc.KeyboardSensitivity,
 			"music_volume:" + layout.Volume,
 			"language:" + L.CurrentCode,
+			"algorithm:" + sm.Algorithm.Name,
 		};
 
 		FileSystem.Data.WriteAllText( File, string.Join( "\n", lines ) );

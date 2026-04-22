@@ -12,6 +12,7 @@
 	"settings.keyboard_sensitivity": "citlivost klávesnice",
 	"settings.music_volume": "hlasitost hudby",
 	"settings.language": "jazyk",
+	"settings.algorithm": "algoritmus bludiště",
 
 	"controls.tilt_forward": "Naklonit vpřed",
 	"controls.tilt_backward": "Naklonit vzad",

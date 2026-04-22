@@ -69,9 +69,8 @@
 		resume = Resume;
 		quit = Quit;
 		nav = new Navigator<Page>( Goto );
+		Settings.Load( this );
 	}
-
-	protected override void OnStart() => Settings.Load( this );
 
 	protected override void OnUpdate()
 	{
