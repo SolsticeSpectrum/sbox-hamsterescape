@@ -5,13 +5,13 @@
 @inherits Panel
 
 <root>
-	<PageTitle Text=@L.T("menu.paused") />
+	<TitleComponent Text=@L.T("menu.paused") />
 	<div class="options">
-		<MenuButton Text=@L.T("menu.resume") Clicked=@Resume />
-		<MenuButton Text=@L.T("menu.settings") Clicked=@Nav.To(Layout.Page.Settings) />
-		<MenuButton Text=@L.T("menu.controls") Clicked=@Nav.To(Layout.Page.Controls) />
-		<MenuButton Text=@L.T("menu.credits") Clicked=@Nav.To(Layout.Page.Credits) />
-		<MenuButton Text=@L.T("menu.quit") Clicked=@Quit />
+		<ButtonComponent Text=@L.T("menu.resume") Clicked=@Resume />
+		<ButtonComponent Text=@L.T("menu.settings") Clicked=@Nav.To(Layout.Page.Settings) />
+		<ButtonComponent Text=@L.T("menu.controls") Clicked=@Nav.To(Layout.Page.Controls) />
+		<ButtonComponent Text=@L.T("menu.credits") Clicked=@Nav.To(Layout.Page.Credits) />
+		<ButtonComponent Text=@L.T("menu.quit") Clicked=@Quit />
 	</div>
 </root>
 

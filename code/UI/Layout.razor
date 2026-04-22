@@ -23,7 +23,7 @@
 			<PausePage Resume=@resume Quit=@quit Nav=@nav />
 			break;
 	}
-	<Toast @ref="Toast" />
+	<ToastComponent @ref="Toast" />
 </root>
 
 @code
@@ -41,7 +41,7 @@
 	[Property] public GameObject PlayerHud { get; set; }
 
 	public Panel Root { get; set; }
-	public Toast Toast { get; set; }
+	public ToastComponent Toast { get; set; }
 	public bool IsPaused { get; set; } = false;
 	public Page CurrentPage { get; set; } = Page.Main;
 	public float Volume { get; set; } = 3;

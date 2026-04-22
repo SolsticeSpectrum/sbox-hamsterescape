@@ -7,25 +7,25 @@
 @inherits Panel
 
 <root>
-	<PageTitle Text=@L.T("menu.settings") />
+	<TitleComponent Text=@L.T("menu.settings") />
 
 	<div class="rows">
-		<SliderRow Label="@L.T("settings.mouse_sensitivity")">
+		<SliderComponent Label="@L.T("settings.mouse_sensitivity")">
 			<Slider>
 				<SliderControl Value:bind="@Layout.SceneManager.RotationController.MouseSensitivity" Min=@(1) Max=@(20) Step=@(1) />
 			</Slider>
-		</SliderRow>
-		<SliderRow Label="@L.T("settings.keyboard_sensitivity")">
+		</SliderComponent>
+		<SliderComponent Label="@L.T("settings.keyboard_sensitivity")">
 			<Slider>
 				<SliderControl Value:bind="@Layout.SceneManager.RotationController.KeyboardSensitivity" Min=@(1) Max=@(20) Step=@(1) />
 			</Slider>
-		</SliderRow>
-		<SliderRow Label="@L.T("settings.music_volume")">
+		</SliderComponent>
+		<SliderComponent Label="@L.T("settings.music_volume")">
 			<Slider>
 				<SliderControl Value:bind="@Layout.Volume" Min=@(0) Max=@(10) Step=@(1) />
 			</Slider>
-		</SliderRow>
-		<DropdownRow Label="@L.T("settings.language")"
+		</SliderComponent>
+		<DropdownComponent Label="@L.T("settings.language")"
 					 Options=@options
 					 Selected=@L.CurrentCode
 					 OnSelect=@select />
@@ -34,9 +34,9 @@
 	<div class="footer">
 		@if ( Game.IsEditor )
 		{
-			<MenuButton Text=@L.T("debug.title") Clicked=@Nav.To(Layout.Page.Debug) />
+			<ButtonComponent Text=@L.T("debug.title") Clicked=@Nav.To(Layout.Page.Debug) />
 		}
-		<MenuButton Text=@L.T("menu.back") Clicked=@Nav.To(Layout.Page.Main) />
+		<ButtonComponent Text=@L.T("menu.back") Clicked=@Nav.To(Layout.Page.Main) />
 	</div>
 </root>
 

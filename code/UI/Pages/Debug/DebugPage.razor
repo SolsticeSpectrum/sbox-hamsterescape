@@ -5,12 +5,12 @@
 @inherits Panel
 
 <root>
-	<PageTitle Text=@L.T("debug.title") />
+	<TitleComponent Text=@L.T("debug.title") />
 	<div class="rows">
-		<MenuButton Text=@L.T("debug.delete_tutorial") Clicked=@DeleteTutorial />
-		<MenuButton Text=@L.T("debug.delete_settings") Clicked=@DeleteSettings />
+		<ButtonComponent Text=@L.T("debug.delete_tutorial") Clicked=@DeleteTutorial />
+		<ButtonComponent Text=@L.T("debug.delete_settings") Clicked=@DeleteSettings />
 	</div>
-	<MenuButton Text=@L.T("menu.back") Clicked=@Nav.To(Layout.Page.Settings) />
+	<ButtonComponent Text=@L.T("menu.back") Clicked=@Nav.To(Layout.Page.Settings) />
 </root>
 
 @code

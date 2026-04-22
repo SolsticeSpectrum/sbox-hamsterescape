@@ -7,12 +7,12 @@
 @inherits Panel
 
 <root>
-	<PageTitle Text=@L.T("menu.controls") />
+	<TitleComponent Text=@L.T("menu.controls") />
 	<div class="columns">
 		<div class="column">
 			@foreach ( var action in LeftColumn )
 			{
-				<KeybindRow Label="@L.T(InputBindings.LocalizationKey(action))"
+				<KeybindComponent Label="@L.T(InputBindings.LocalizationKey(action))"
 							Key="@InputBindings.GetDisplayKey(action)"
 							IsRebinding=@(rebinding == action)
 							Clicked=@(() => BeginRebind(action)) />
@@ -21,7 +21,7 @@
 		<div class="column">
 			@foreach ( var action in RightColumn )
 			{
-				<KeybindRow Label="@L.T(InputBindings.LocalizationKey(action))"
+				<KeybindComponent Label="@L.T(InputBindings.LocalizationKey(action))"
 							Key="@InputBindings.GetDisplayKey(action)"
 							IsRebinding=@(rebinding == action)
 							Clicked=@(() => BeginRebind(action)) />
@@ -29,8 +29,8 @@
 		</div>
 	</div>
 	<div class="footer">
-		<MenuButton Text=@L.T("controls.reset_defaults") Clicked=@ResetBindings />
-		<MenuButton Text=@L.T("menu.back") Clicked=@Nav.To(Layout.Page.Main) />
+		<ButtonComponent Text=@L.T("controls.reset_defaults") Clicked=@ResetBindings />
+		<ButtonComponent Text=@L.T("menu.back") Clicked=@Nav.To(Layout.Page.Main) />
 	</div>
 </root>
 
